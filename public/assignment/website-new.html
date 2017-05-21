@@ -2,9 +2,55 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Title</title>
+    <title>New Website</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
 </head>
 <body>
+<nav class="navbar bg-primary navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-text pull-left" style="position:fixed; left:15px" href=website-list.html>
+                <div class="glyphicon glyphicon-chevron-left" style="color:white"></div>
+            </a>
+            <a class="navbar-brand" style="position:fixed; left:50px; color:white" href="#">
+                <b>New Website</b>
+            </a>
+            <a class="navbar-text pull-right" style="position:fixed; right:15px" href=website-list.html>
+                <div class="glyphicon glyphicon-ok" style="color:white"></div>
+            </a>
+        </div>
+    </div>
+</nav>
 
+
+
+<div class="container">
+    <h1></h1>
+
+    <form>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Name">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control vresize" style="min-height:150px" id="description" placeholder="Description"></textarea>
+        </div>
+    </form>
+
+
+
+<nav class="navbar bg-primary navbar-fixed-bottom">
+    <div class="container">
+        <div class="navbar-text">
+            <a href=profile.html>
+                <span class="glyphicon glyphicon-user" style="position:absolute;
+                top:0; right:0; padding:15px; color:white"></span>
+            </a>
+        </div>
+    </div>
+</nav>
 </body>
+
 </html>
