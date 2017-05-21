@@ -2,9 +2,62 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
-    <title>Title</title>
+    <title>Edit Youtube Video</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
 </head>
 <body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:#eee; border-color:#eee">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-text pull-left" style="position:fixed; left:15px" href=widget-list.html>
+                <div class="glyphicon glyphicon-chevron-left" style="color:black"></div>
+            </a>
+            <a class="navbar-brand" style="position:fixed; left:60px; color:darkgrey" href="#">
+                <b>Widget Edit</b>
+            </a>
+            <a class="navbar-text pull-right" style="position:fixed; right:15px" href=widget-list.html>
+                <div class="glyphicon glyphicon-ok" style="color:black"></div>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <h1></h1>
+    <form>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name">
+        </div>
+        <div class="form-group">
+            <label for="text">Text</label>
+            <input type="text" class="form-control" id="text">
+        </div>
+        <div class="form-group">
+            <label for="url">URL</label>
+            <input type="url" class="form-control" id="url">
+        </div>
+        <div class="form-group">
+            <label for="width">Width</label>
+            <input type="number" class="form-control" id="width">
+        </div>
+        <a class="btn btn-danger btn-block"
+           href="website-list.html">Delete</a>
+    </form>
+</div>
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom" style="background-color:#eee; border-color:#eee">
+    <div class="container-fluid">
+        <div class="navbar-text">
+            <a href=profile.html>
+                <span class="glyphicon glyphicon-user glyphicon-primary"
+                      style="position:absolute; top:0; right:0; padding:15px"></span>
+            </a>
+        </div>
+    </div>
+</nav>
 
 </body>
 </html>
