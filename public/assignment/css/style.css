@@ -75,3 +75,9 @@ body {
     min-height:150px;
 }
 
+.bg-image {
+    background:url('https://pbs.twimg.com/media/C-Ml7aNVwAApdDL.jpg');
+    margin:0;
+    background-size:1440px 800px;
+}
+
