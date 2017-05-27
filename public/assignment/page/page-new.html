@@ -4,42 +4,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
     <title>New Page</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
+    <link href="../css/style.css" rel="stylesheet"/>
 </head>
 <body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:#eee; border-color:#eee">
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <div class="row">
                 <div class="hidden-sm hidden-med hidden-lg hidden-xl">
-                    <a class="navbar-text pull-left" style="position:fixed; left:15px" href=page-list.html>
+                    <a class="navbar-text pull-left fixed-left" href=page-list.html>
                         <div class="glyphicon glyphicon-chevron-left" style="color:black"></div>
                     </a>
-                    <a class="navbar-brand" style="position:fixed; left:60px; color:darkgray" href="#">
+                    <a class="navbar-brand darkgrey page-title" href="#">
                         <b>New Page</b>
                     </a>
-                    <a class="navbar-text pull-right" style="position:fixed; right:15px" href=page-list.html>
-                        <div class="glyphicon glyphicon-ok" style="color:black"></div>
+                    <a class="navbar-text pull-right fixed-right" href=page-list.html>
+                        <div class="glyphicon glyphicon-ok black"></div>
                     </a>
                 </div>
                 <div class="hidden-xs col-sm-4 col-med-4 col-lg-4">
-                    <a class="navbar-text pull-left" style="position:fixed; left:15px" href=page-list.html>
-                        <div class="glyphicon glyphicon-chevron-left" style="color:black"></div>
+                    <a class="navbar-text pull-left fixed-left"href=page-list.html>
+                        <div class="glyphicon glyphicon-chevron-left black"></div>
                     </a>
-                    <a class="navbar-brand" style="position:fixed; left:60px;color:darkgray" href="#">
+                    <a class="navbar-brand darkgrey page-title" href="#">
                         <b>Pages</b>
                     </a>
-                    <a class="navbar-text pull-right" style="position:fixed; left:28%" href=page-new.html>
-                        <div class="glyphicon glyphicon-plus" style="color:black"></div>
+                    <a class="navbar-text pull-right middle-glyphicon" href=page-new.html>
+                        <div class="glyphicon glyphicon-plus black"></div>
                     </a>
                 </div>
                 <div class="hidden-xs col-sm-8 col-med-8 col-lg-8">
-                    <a class="navbar-brand" style="position:fixed; left:35%; color:darkgray" href="#">
+                    <a class="navbar-brand darkgrey left-header" href="#">
                         <b>New Page</b>
                     </a>
-                    <a class="navbar-text pull-right" style="position:fixed; right:15px" href="page-list.html">
-                        <div class="glyphicon glyphicon-ok" style="color:black"></div>
+                    <a class="navbar-text pull-right fixed-right" href="page-list.html">
+                        <div class="glyphicon glyphicon-ok black"></div>
                     </a>
                 </div>
             </div>
@@ -47,45 +47,45 @@
     </div>
 </nav>
 
-<div class="hidden-xs col-sm-4 col-med-4 col-lg-4" style="padding-top:25px" id="left">
+<div class="hidden-xs col-sm-4 col-med-4 col-lg-4" id="left">
     <div class="container-fluid">
         <h></h>
         <ul class="list-group">
-            <li class="list-group-item" style="border-color:transparent">
+            <li class="list-group-item">
                 <a href="page-edit.html">
                     <span class="glyphicon glyphicon-cog pull-right"></span>
                 </a>
-                <a href="widget-list.html">
+                <a href="../widget/widget-list.html">
                    Cras justo odio</a></li>
-            <li class="list-group-item" style="border-color:transparent">
+            <li class="list-group-item">
                 <a href="page-edit.html">
                     <span class="glyphicon glyphicon-cog pull-right"></span>
                 </a>
-                <a href="widget-list.html">
+                <a href="../widget/widget-list.html">
                     Dapibus ac facilisis in</a></li>
-            <li class="list-group-item" style="border-color:transparent">
+            <li class="list-group-item">
                 <a href="page-edit.html">
                     <span class="glyphicon glyphicon-cog pull-right"></span>
                 </a>
-                <a href="widget-list.html">
+                <a href="../widget/widget-list.html">
                     Morbi leo risus</a></li>
-            <li class="list-group-item" style="border-color:transparent">
+            <li class="list-group-item">
                 <a href="page-edit.html">
                     <span class="glyphicon glyphicon-cog pull-right"></span>
                 </a>
-                <a href="widget-list.html">
+                <a href="../widget/widget-list.html">
                     Porta ac consectetur ac</a></li>
-            <li class="list-group-item" style="border-color:transparent">
+            <li class="list-group-item">
                 <a href="page-edit.html">
                     <span class="glyphicon glyphicon-cog pull-right"></span>
                 </a>
-                <a href="widget-list.html">
+                <a href="../widget/widget-list.html">
                     Vestibulum at eros</a></li>
         </ul>
     </div>
 </div>
 
-<div class="col-xs-12 col-sm-8 col-med-8 col-lg-8" style="padding-right: 15px" id="right">
+<div class="col-xs-12 col-sm-8 col-med-8 col-lg-8" id="right">
     <div class="container-fluid">
         <h1></h1>
         <form>
@@ -102,12 +102,11 @@
 </div>
 
 
-<nav class="navbar navbar-inverse navbar-fixed-bottom" style="background-color:#eee; border-color:#eee">
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
     <div class="container">
         <div class="navbar-text">
-            <a href=profile.html>
-                <span class="glyphicon glyphicon-user glyphicon-primary" style="position:absolute;
-                top:0; right:0; padding:15px"></span>
+            <a href=../profile.html>
+                <span class="glyphicon glyphicon-user glyphicon-primary"></span>
             </a>
         </div>
     </div>

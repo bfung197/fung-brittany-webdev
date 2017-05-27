@@ -5,3 +5,73 @@ input.form-control {
 body {
     padding-top: 36px;
 }
+
+.navbar-inverse {
+    background-color:#eee;
+    border-color:#eee;
+}
+
+.list-group-item {
+    border-color:transparent;
+}
+
+#left {
+    padding-top:25px
+}
+
+.white {
+    color:white;
+}
+
+.black {
+    color:black;
+}
+
+.glyphicon-user {
+    position:absolute;
+    top:0;
+    right:0;
+    padding:15px
+}
+
+.darkgrey {
+    color:darkgrey;
+}
+
+.left-header {
+    position:fixed;
+    left:35%;
+}
+
+.page-title {
+    position:fixed;
+    left:60px;
+}
+
+#right {
+    padding-right:15px;
+}
+
+.middle-glyphicon {
+    position:fixed;
+    left:28%;
+}
+
+.fixed-left {
+    position:fixed;
+    left:15px;
+}
+
+.fixed-right {
+    position:fixed;
+    right:15px;
+}
+
+.list-padding {
+    padding-top:50px;
+}
+
+.vresize {
+    min-height:150px;
+}
+
