@@ -8,21 +8,21 @@
                                   $location) {
 
         var model = this;
-        var userId = $routeParams['uid'];
+        model.userId = $routeParams['uid'];
 
         // event handlers
         model.createWebsite = createWebsite;
 
         function init() {
-            model.websites = websiteService.findAllWebsitesForUser(userId);
+            model.websites = websiteService.findAllWebsitesForUser(model.userId);
         }
         init();
 
         // implementation
         function createWebsite(website) {
-            website.developerId = userId;
+            website.developerId = model.userId;
             websiteService.createWebsite(website);
-            $location.url('/user/'+userId+'/website');
+            $location.url('/user/'+model.userId+'/website');
         }
     }
 })();

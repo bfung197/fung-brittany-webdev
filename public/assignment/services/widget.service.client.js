@@ -18,10 +18,9 @@
             ]
         ;
 
-
         return {
             createWidget: createWidget,
-            findAllWidgetsForUser: findAllWidgetsForUser,
+            findWidgetByPageId: findWidgetByPageId,
             findWidgetById: findWidgetById,
             updateWidget: updateWidget,
             deleteWidget: deleteWidget
@@ -38,6 +37,12 @@
 
         }
 
+        function findWidgetById(widgetId) {
+            return widgets.find(function (widget) {
+                return widget._id === widgetId;
+            });
+        }
+
         function deleteWidget(WidgetId) {
             var Widget = Widgets.find(function (Widget) {
                 return Widget._id === WidgetId;
@@ -46,20 +51,10 @@
             Widgets.splice(index, 1);
         }
 
-        function findWidgetById(WidgetId) {
-            return Widgets.find(function (Widget) {
-                return Widget._id === WidgetId;
+        function findWidgetByPageId(pageId) {
+            return widgets.find(function (widget) {
+                return widget.pageId === pageId;
             });
-        }
-
-        function findAllWidgetsForUser(userId) {
-            var resultSet = [];
-            for(var w in Widgets) {
-                if(Widgets[w].developerId === userId) {
-                    resultSet.push(Widgets[w]);
-                }
-            }
-            return resultSet;
         }
     }
 })();

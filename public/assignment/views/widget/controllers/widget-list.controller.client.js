@@ -3,9 +3,12 @@
         .module('WAM')
         .controller('widgetListController', widgetListController);
 
-    function widgetListController($sce) {
+    function widgetListController($sce, $routeParams) {
 
         var model = this;
+        model.userId = $routeParams['uid'];
+        model.websiteId = $routeParams['wid'];
+        model.pageId = $routeParams['pid'];
 
         var widgets = [
             { "_id": "123", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},

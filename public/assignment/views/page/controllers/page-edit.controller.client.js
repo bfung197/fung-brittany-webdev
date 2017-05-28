@@ -18,7 +18,7 @@
         model.deletePage = deletePage;
 
         function init() {
-            model.pages = websiteService.findAllPagesForUser(model.websiteId);
+            model.pages = websiteService.findPageByWebsiteId(model.websiteId);
             model.pages = websiteService.findPageById(model.pageId);
         }
         init();

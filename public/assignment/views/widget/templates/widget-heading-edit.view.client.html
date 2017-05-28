@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-text pull-left fixed-left" href=#!/user/:uid/website/:wid/page/:pid/widget>
+                <div class="glyphicon glyphicon-chevron-left black"></div>
+            </a>
+            <a class="navbar-brand darkgrey page-title" href="#">
+                <b>Widget Edit</b>
+            </a>
+            <a class="navbar-text pull-right fixed-right" href=#!/user/:uid/website/:wid/page/:pid/widget>
+                <div class="glyphicon glyphicon-ok black"></div>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <h1></h1>
+    <form>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name">
+        </div>
+        <div class="form-group">
+            <label for="text">Text</label>
+            <input type="text" class="form-control" id="text">
+        </div>
+        <label for="size">Size</label>
+        <select class="form-control" id="size">
+            <option value="1">1 (Extra Large)</option>
+            <option value="2">2 </option>
+            <option value="3">3 </option>
+            <option value="4">4 </option>
+            <option value="5">5 </option>
+            <option value="6">6 (Extra Small)</option>
+        </select>
+    </form>
+</div>
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text">
+            <a href=#!/user/{{model.userId}}>
+                <span class="glyphicon glyphicon-user glyphicon-primary"></span>
+            </a>
+        </div>
+    </div>
+</nav>
+</body>

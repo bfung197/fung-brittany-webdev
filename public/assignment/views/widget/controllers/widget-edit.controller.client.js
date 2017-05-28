@@ -1,15 +1,16 @@
-(function() {
+(function () {
     angular
         .module("WAM")
         .controller("editWidgetController", editWidgetController);
 
-    function editWidgetController($routeParams, WidgetService,$location) {
+    function editWidgetController($routeParams, WidgetService, $location) {
         var model = this;
-        var userId = $routeParams["userId"];
-        var widgetId = $routeParams.widgetId;
+        model.userId = $routeParams["uid"];
+        model.widgetId = $routeParams.wgid;
+        model.pageId = $routeParams['pid'];
 
         function init() {
-            model.user = WidgetService.findAllWidgetsForUser(model.userId);
+            model.widgets = WidgetService.findWidgetByPageId(model.pageId);
             model.widget = WidgetService.findWidgetById(model.widgetId);
         }
         init();
