@@ -12,24 +12,25 @@
         </div>
 
         <label for="username">Username</label>
-        <input ng-model="model.user.username"
+        <input ng-model="username"
                 type="text"
                id="username"
                class="form-control"
                placeholder="username"/>
         <label for="password">Password</label>
-        <input ng-model="model.user.password"
+        <input ng-model="password"
                 type="password"
                id="password"
                class="form-control"
                placeholder="password"/>
         <label for="verify">Verify Password</label>
         <input type="password"
+               ng-model="password2"
                id="verify"
                class="form-control"
                placeholder="verify password"/>
         <a class="btn btn-primary btn-block"
-           href="#!/user/:uid">Register</a>
+           ng-click="model.register(username,password,password2)">Register</a>
         <a class="btn btn-danger  btn-block"
            href="#!/">Cancel</a>
     </div>

@@ -6,7 +6,7 @@
     function profileController($location, userService, $routeParams) {
 
         var model = this;
-        var userId = $routeParams['userId'];
+        var userId = $routeParams['uid'];
 
         function init() {
             model.user = userService.findUserById(userId);
