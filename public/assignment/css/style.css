@@ -75,11 +75,17 @@ body {
     min-height:150px;
 }
 
-.bg-image {
+img {
     width:100%;
-    height:1000px;
-    background:url('https://pbs.twimg.com/media/C-Ml7aNVwAApdDL.jpg');
-    background-repeat:no-repeat;
-    background-size:contain;
+    height:auto;
 }
+
+.size {
+    margin-bottom:10px;
+}
+
+#description {
+    margin-bottom:10px;
+}
+
 

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<body>
+<div class="container">
+        <h1>Login</h1>
+
+    <div ng-show="model.message" class="alert alert-info">
+        {{model.message}}
+    </div>
+
+    <label for="username">Username</label>
+        <input ng-model="model.user.username"
+               id="username"
+               type="text"
+               class="form-control"/>
+    <label for="password">Password</label>
+        <input ng-model="model.user.password"
+               id="password"
+               type="password"
+               class="form-control"/>
+        <a ng-click="login(username, password)" href="#!/user/:uid"
+           class="btn btn-primary btn-block">
+            Login
+        </a>
+        <a class="btn btn-success btn-block"
+           href="#!/register">
+            Register
+        </a>
+</div>
+</body>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-text pull-left fixed-left" href=#!/user/:uid/website/:wid/page>
+                <div class="glyphicon glyphicon-chevron-left black"></div>
+            </a>
+            <a class="navbar-brand darkgrey page-title" href="#">
+                <b>Widget List</b>
+            </a>
+            <a class="navbar-text pull-right fixed-right" href=#!/user/:uid/website/:wid/page/:pid/widget/new>
+                <div class="glyphicon glyphicon-plus black"></div>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div ng-class="wd-widget-list">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand"
+                   href="#" style="color: gray;">
+                    Widget List
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+
+        <div ng-repeat="widget in model.widgets"
+             class="wd-widget">
+            <div class="wd-toolbar">
+                <span class="glyphicon glyphicon-cog"></span>
+                <span class="glyphicon glyphicon-align-justify"></span>
+            </div>
+            <div ng-include="model.getWidgetUrlForType(widget.widgetType)"></div>
+        </div>
+    </div>
+
+    <div ng-include="'views/common/footer.view.client.html'"></div>
+
+</div>
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text">
+            <a href=#!/user/:uid>
+                <span class="glyphicon glyphicon-user glyphicon-primary"></span>
+            </a>
+        </div>
+    </div>
+</nav>
+</body>
