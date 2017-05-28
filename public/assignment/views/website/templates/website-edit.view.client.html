@@ -14,7 +14,7 @@
                         <div class="col-lg-3 visible-lg">
                             Created
                         </div>
-                        <div class="col-md-2 hidden-sm  hidden-xs">
+                        <div class="col-md-3 hidden-sm  hidden-xs">
                             Updated
                         </div>
                         <div class="col-sm-2 col-xs-6">
@@ -24,42 +24,37 @@
                 </li>
 
 
-                <li class="list-group-item">
+                <li ng-repeat="website in model.websites" class="list-group-item">
                     <div class="row">
                         <div class="col-lg-5 col-md-8 col-sm-8 col-xs-8">
-                            <a href="#!/user/:uid/website/:wid/page">
-                                Cras justo odio
+                            <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">
+                                {{website.name}}
                             </a>
                         </div>
                         <div class="col-lg-3 visible-lg">
-                            1/1/2017
+                            {{website.created | date}}
                         </div>
-                        <div class="col-md-2 hidden-sm  hidden-xs">
-                            2/2/2017
+                        <div class="col-md-3 hidden-sm  hidden-xs">
+                            {{website.updated | date}}
                         </div>
-                        <div class="col-sm-4 col-xs-4">
-                            <!--<a href="website-edit.html" class="pull-right">-->
-                            <!--<span class="glyphicon glyphicon-cog pull-right"></span>-->
-                            <!--</a>-->
+                        <div class="col-sm-1 col-xs-1">
+                            <a href="#!/user/{{model.userId}}/website/{{website._id}}">
+                                <span class="glyphicon glyphicon-cog pull-right"></span>
+                            </a>
                         </div>
                     </div>
-                </li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-                <li class="list-group-item">Vestibulum at eros</li>
             </ul>
         </div>
+
         <div class="col-xs-12 col-sm-8">
             <label for="name">Name</label>
             <input id="name"
-                   ng-model="model.websites.name"
+                   ng-model="model.website.name"
                    class="form-control"/>
 
             <label for="description">Description</label>
             <textarea id="description"
-                      ng-model="model.websites.description"
+                      ng-model="model.website.description"
                       rows="5"
                       class="form-control"></textarea>
 
@@ -79,7 +74,7 @@
 <nav class="navbar bg-primary navbar-fixed-bottom">
     <div class="container">
         <div class="navbar-text">
-            <a href=#!/user/:uid>
+            <a href=#!/user/{{model.userId}}>
                 <span class="glyphicon glyphicon-user white"></span>
             </a>
         </div>

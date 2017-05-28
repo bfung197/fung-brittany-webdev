@@ -6,7 +6,7 @@
     function websiteListController($routeParams, websiteService) {
 
         var model = this;
-        model.userId = $routeParams['userId'];
+        model.userId = $routeParams['uid'];
 
         function init() {
             model.websites = websiteService.findAllWebsitesForUser(model.userId);
