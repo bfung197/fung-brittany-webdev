@@ -3,7 +3,21 @@
 
 <body>
 
-<div class="container-fluid">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-text pull-left fixed-left"
+               href=#!/user/{{model.userId}}/website>
+                <div class="glyphicon glyphicon-chevron-left black"></div>
+            </a>
+            <a class="navbar-brand darkgrey page-title">
+                <b>Page List</b>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid list-padding">
     <ul class="list-group">
         <li class="list-group-item active">
             <div class="row">
@@ -17,7 +31,7 @@
                     Updated
                 </div>
                 <div class="col-sm-1">
-                    <a href="#!/user/{{model.userId}}/website/{{website._id}}/page/new">
+                    <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/new">
                         <span class="glyphicon glyphicon-plus pull-right white"></span>
                     </a>
                 </div>

@@ -4,7 +4,8 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-text pull-left fixed-left" href=#!/user/:uid/website/:wid/page/:pid/widget>
+            <a class="navbar-text pull-left fixed-left"
+               href=#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget>
                 <div class="glyphicon glyphicon-chevron-left black"></div>
             </a>
             <a class="navbar-brand darkgrey page-title">
@@ -18,13 +19,13 @@
 <div class="container-fluid list-padding">
     <a class="list-group">
         <li class="list-group-item">
-            <a href="widget-youtube.view.client.html">
+            <a ng-click="model.createWidget(model.widgetId)">
                 Youtube</a></li>
         <li class="list-group-item">
-            <a href="widget-heading.view.client.html">
+            <a ng-click="model.createWidget(model.widgetId)">
                 Heading </a></li>
         <li class="list-group-item">
-            <a href="widget-image.view.client.html">
+            <a ng-click="model.createWidget(model.widgetId)">
                 Image</a></li>
 
     </a>

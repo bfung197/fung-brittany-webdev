@@ -6,10 +6,10 @@
     function profileController($location, userService, $routeParams) {
 
         var model = this;
-        var userId = $routeParams['uid'];
+        model.userId = $routeParams['uid'];
 
         function init() {
-            model.user = userService.findUserById(userId);
+            model.user = userService.findUserById(model.userId);
         }
         init();
     }

@@ -6,7 +6,8 @@
     function editWidgetController($routeParams, WidgetService, $location) {
         var model = this;
         model.userId = $routeParams["uid"];
-        model.widgetId = $routeParams.wgid;
+        model.widgetId = $routeParams['wgid'];
+        model.websiteId = $routeParams['wid'];
         model.pageId = $routeParams['pid'];
 
         function init() {

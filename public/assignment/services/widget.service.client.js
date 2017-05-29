@@ -26,14 +26,14 @@
             deleteWidget: deleteWidget
         };
 
-        function createWidget(Widget) {
-            Widget._id = (new Date()).getTime() + "";
-            Widget.created = new Date();
-            Widget.updated = new Date();
-            Widgets.push(Widget);
+        function createWidget(widget) {
+            widget._id = (new Date()).getTime() + "";
+            widget.created = new Date();
+            widget.updated = new Date();
+            widgets.push(Widget);
         }
 
-        function updateWidget(WidgetId, Widget) {
+        function updateWidget(widgetId, widget) {
 
         }
 
@@ -43,12 +43,12 @@
             });
         }
 
-        function deleteWidget(WidgetId) {
-            var Widget = Widgets.find(function (Widget) {
-                return Widget._id === WidgetId;
+        function deleteWidget(widgetId) {
+            var Widget = widgets.find(function (widget) {
+                return widget._id === widgetId;
             });
             var index = Widgets.indexOf(Widget);
-            Widgets.splice(index, 1);
+            widgets.splice(index, 1);
         }
 
         function findWidgetByPageId(pageId) {
