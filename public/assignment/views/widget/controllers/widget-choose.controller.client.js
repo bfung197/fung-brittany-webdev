@@ -4,8 +4,8 @@
         .controller('newWidgetController', newWidgetController);
 
     function newWidgetController($routeParams,
-                               widgetService,
-                               $location) {
+                                 widgetService,
+                                 $location) {
 
         var model = this;
         model.userId = $routeParams['uid'];
@@ -18,13 +18,14 @@
         function init() {
             model.widgets = widgetService.findWidgetByPageId(model.pageId);
         }
+
         init();
 
         // implementation
         function createWidget(widget) {
             widget.pageId = model.pageId;
             widgetService.widgetWebsite(page);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page'+model.pageId+'/widget'+widget._id);
+            $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page' + model.pageId + '/widget' + widget._id);
         }
     }
 })();

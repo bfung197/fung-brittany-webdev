@@ -11,6 +11,7 @@
         function init() {
             model.user = userService.findUserById(model.userId);
         }
+
         init();
     }
 })();

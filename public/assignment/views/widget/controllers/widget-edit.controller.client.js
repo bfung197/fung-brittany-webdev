@@ -14,6 +14,7 @@
             model.widgets = WidgetService.findWidgetByPageId(model.pageId);
             model.widget = WidgetService.findWidgetById(model.widgetId);
         }
+
         init();
     }
 })();

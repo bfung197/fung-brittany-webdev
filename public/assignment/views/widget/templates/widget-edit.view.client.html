@@ -25,29 +25,27 @@
 </nav>
 
 <div class="container-fluid">
-<div ng-switch="model.widget.widgetType">
-    <div ng-switch-when="HEADING">
-        <ng-include src="'views/widget/templates/widget-heading-edit.view.client.html'"></ng-include>
+    <div ng-switch="model.widget.widgetType">
+        <div ng-switch-when="HEADING">
+            <ng-include src="'views/widget/templates/widget-heading-edit.view.client.html'"></ng-include>
+        </div>
+        <div ng-switch-when="YOUTUBE">
+            <ng-include src="'views/widget/templates/widget-youtube-edit.view.client.html'"></ng-include>
+        </div>
+        <div ng-switch-when="IMAGE">
+            <ng-include src="'views/widget/templates/widget-image-edit.view.client.html'"></ng-include>
+        </div>
     </div>
-    <div ng-switch-when="YOUTUBE">
-        <ng-include src="'views/widget/templates/widget-youtube-edit.view.client.html'"></ng-include>
-    </div>
-    <div ng-switch-when="IMAGE">
-        <ng-include src="'views/widget/templates/widget-image-edit.view.client.html'"></ng-include>
+
+    <div>
+        <a class="btn btn-success btn-block"
+           ng-click="model.updateWidget(model.widgetId)">
+            Update</a>
+        <a class="btn btn-danger btn-block"
+           ng-click="model.deleteWidget(model.widgetId)">
+            Delete</a>
     </div>
 </div>
-
-<div>
-    <a class="btn btn-success btn-block"
-       ng-click="model.updateWidget(model.widgetId)">
-        Update</a>
-    <a class="btn btn-danger btn-block"
-       ng-click="model.deleteWidget(model.widgetId)">
-        Delete</a>
-</div>
-</div>
-
-
 
 
 </body>

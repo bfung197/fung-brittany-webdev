@@ -16,13 +16,14 @@
         function init() {
             model.websites = websiteService.findAllWebsitesForUser(model.userId);
         }
+
         init();
 
         // implementation
         function createWebsite(website) {
             website.developerId = model.userId;
             websiteService.createWebsite(website);
-            $location.url('/user/'+model.userId+'/website');
+            $location.url('/user/' + model.userId + '/website');
         }
     }
 })();

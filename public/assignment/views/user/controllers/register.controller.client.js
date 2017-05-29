@@ -13,14 +13,14 @@
         // implementation
         function register(username, password, password2) {
 
-            if(password !== password2) {
+            if (password !== password2) {
                 model.error = "Passwords must match";
                 return;
             }
 
             var found = userService.findUserByUsername(username);
 
-            if(found !== null) {
+            if (found !== null) {
                 model.error = "Username is not available";
             } else {
                 var user = {

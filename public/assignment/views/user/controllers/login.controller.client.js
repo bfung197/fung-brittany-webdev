@@ -12,7 +12,7 @@
 
             var found = userService.findUserByCredentials(username, password);
 
-            if(found!== null) {
+            if (found !== null) {
                 $location.url('/user/' + found._id);
             } else {
                 model.message = "Unable to log in.";
