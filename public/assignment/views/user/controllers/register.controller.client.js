@@ -13,14 +13,14 @@
         // implementation
         function register(username, password, password2) {
 
-            if (password !== password2) {
+            if(password !== password2) {
                 model.error = "Passwords must match";
                 return;
             }
 
-            var found = userService.findUserByUsername(username);
+            var found = null;//userService.findUserByUsername(username);
 
-            if (found !== null) {
+            if(found !== null) {
                 model.error = "Username is not available";
             } else {
                 var user = {
@@ -28,8 +28,13 @@
                     password: password
                 };
                 // model.message = user;
-                userService.createUser(user);
-                $location.url('/user/' + user._id);
+                userService
+                    .createUser(user)
+                    .then(goToProfile);
+
+                function goToProfile (user) {
+                    $location.url('/user/' + user._id);
+                }
             }
         }
     }

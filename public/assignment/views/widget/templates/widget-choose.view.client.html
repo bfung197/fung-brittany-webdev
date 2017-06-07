@@ -19,13 +19,16 @@
 <div class="container-fluid list-padding">
     <a class="list-group">
         <li class="list-group-item">
-            <a ng-click="model.createWidget(model.widgetId)">
+            <a ng-model="model.widgetType"
+                    ng-click="model.createWidget(widget, YOUTUBE)">
                 Youtube</a></li>
         <li class="list-group-item">
-            <a ng-click="model.createWidget(model.widgetId)">
+            <a ng-model="model.widgetType"
+                    ng-click="model.createWidget(widget, HEADING)">
                 Heading </a></li>
         <li class="list-group-item">
-            <a ng-click="model.createWidget(model.widgetId)">
+            <a ng-model="model.widgetType"
+                    ng-click="model.createWidget(widget, IMAGE)">
                 Image</a></li>
 
     </a>

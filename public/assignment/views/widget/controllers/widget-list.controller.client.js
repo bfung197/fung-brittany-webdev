@@ -3,7 +3,7 @@
         .module('WAM')
         .controller('widgetListController', widgetListController);
 
-    function widgetListController($sce, $routeParams) {
+    function widgetListController($sce, $routeParams, widgetService) {
 
         var model = this;
         model.userId = $routeParams['uid'];
@@ -25,6 +25,15 @@
         model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
         model.getWidgetUrlForType = getWidgetUrlForType;
 
+        function init() {
+            widgetService
+                .findAllWidgetsForPage(model.pageId)
+                .then(function (widgets) {
+                    model.widgets = widgets;
+                });
+        }
+        init();
+
         function getWidgetUrlForType(type) {
             return 'views/widget/templates/widget-' + type.toLowerCase() + '.view.client.html';
         }
@@ -34,7 +43,6 @@
             var youTubeLinkParts = youTubeLink.split('/');
             var id = youTubeLinkParts[youTubeLinkParts.length - 1];
             embedUrl += id;
-            console.log(embedUrl);
             return $sce.trustAsResourceUrl(embedUrl);
 
             //https://www.youtube.com/embed/AM2Ivdi9c4E

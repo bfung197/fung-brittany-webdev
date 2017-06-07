@@ -1,3 +1,4 @@
+
 (function () {
     angular
         .module('WAM')
@@ -7,11 +8,31 @@
 
         var model = this;
         model.userId = $routeParams['uid'];
+        model.updateUser = updateUser;
+        model.deleteUser = deleteUser;
 
-        function init() {
-            model.user = userService.findUserById(model.userId);
+        userService
+            .findUserById(model.userId)
+            .then(renderUser);
+
+        function renderUser (user) {
+            model.user = user;
         }
 
-        init();
+        function updateUser(user) {
+            userService
+                .updateUser(user._id, user)
+                .then(function () {
+                    model.message = "User updated successfully.";
+                })
+        }
+
+        function deleteUser(user) {
+            userService
+                .deleteUser(user._id)
+                .then(function () {
+                    $location.url('/');
+                })
+        }
     }
 })();

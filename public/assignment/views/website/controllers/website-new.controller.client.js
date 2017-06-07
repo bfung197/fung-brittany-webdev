@@ -3,9 +3,7 @@
         .module('WAM')
         .controller('newWebsiteController', newWebsiteController);
 
-    function newWebsiteController($routeParams,
-                                  websiteService,
-                                  $location) {
+    function newWebsiteController($routeParams, websiteService, $location) {
 
         var model = this;
         model.userId = $routeParams['uid'];
@@ -14,16 +12,27 @@
         model.createWebsite = createWebsite;
 
         function init() {
-            model.websites = websiteService.findAllWebsitesForUser(model.userId);
+            websiteService
+                .findAllWebsitesForUser(model.userId)
+                .then(renderWebsites)
         }
-
         init();
 
         // implementation
-        function createWebsite(website) {
+        function createWebsite(website, userId) {
             website.developerId = model.userId;
-            websiteService.createWebsite(website);
+
+            websiteService
+                .createWebsite(website)
+                .then(goToWebsites);
+        }
+
+        function goToWebsites() {
             $location.url('/user/' + model.userId + '/website');
+        }
+
+        function renderWebsites(websites) {
+            model.websites = websites
         }
     }
 })();

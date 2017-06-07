@@ -17,6 +17,10 @@
 
     <h1>Profile</h1>
 
+    <div ng-show="model.message" class="alert alert-success">
+    {{model.message}}
+    </div>
+
     <label for="username">Username</label>
     <input ng-model="model.user.username"
            id="username"
@@ -38,11 +42,18 @@
            class="form-control"/>
 
     <label>Email</label>
-    <input type="email"
+    <input ng-model="model.user.email"
+           type="email"
            class="form-control"/>
 
     <a href="#!/user/{{model.user._id}}/website"
        class="btn btn-block btn-primary">Website</a>
 
-    <a href="#!/" class="btn btn-block btn-danger">Logout</a>
+    <a ng-click="model.updateUser(model.user)"
+       class="btn btn-block btn-success">Update</a>
+
+    <a ng-click="model.deleteUser(model.user)"
+       class="btn btn-block btn-danger">Unregister</a>
+
+    <a href="#!/" class="btn btn-block btn-info">Logout</a>
 </div>

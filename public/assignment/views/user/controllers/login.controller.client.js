@@ -10,13 +10,22 @@
 
         function login(username, password) {
 
-            var found = userService.findUserByCredentials(username, password);
+            userService
+                .findUserByCredentials(username, password)
+                .then(login, handleError);
 
-            if (found !== null) {
-                $location.url('/user/' + found._id);
-            } else {
+            function handleError(error) {
                 model.message = "Unable to log in.";
             }
-        };
+
+            function login(found) {
+                if (found !== null) {
+                    $location.url('/user/' + found._id);
+                } else {
+                    model.message = "Unable to log in.";
+                }
+            }
+        }
     }
-})();
+
+    }());
