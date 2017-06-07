@@ -11,7 +11,8 @@
             findWidgetById: findWidgetById,
             updateWidget: updateWidget,
             deleteWidget: deleteWidget,
-            uploadImage: uploadImage
+            uploadImage: uploadImage,
+            orderWidgets: orderWidgets
         };
 
         function createWidget(widget) {
@@ -60,6 +61,11 @@
                 .then(function (response) {
                     return response.data;
                 });
+        }
+
+        function orderWidgets(initial, final, pageId) {
+            var url = "/page/" + pageId + "/widget?initial=" + initial +"&final=" + final;
+            return $http.put(url)
         }
     }
 })();
