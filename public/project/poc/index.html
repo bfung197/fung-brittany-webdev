@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="pocApp">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+    <script src="../../vendor/angular/angular.min.js"></script>
+    <link href="../../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../app.js"></script>
+    <title>Project</title>
+</head>
+<body>
+<div class="container-fluid"
+     ng-controller="pocController as model">
+
+    <h1>WGER POC</h1>
+    <div class="row">
+        <div class="col-xs-6">
+            <h2>Search</h2>
+            <form>
+                <select class="form-control"
+                        id="muscle"
+                        style="margin-bottom:10px"
+                        ng-model="model.muscle">
+                    <option value="1">Biceps brachii</option>
+                    <option value="2">Anterior deltoid</option>
+                    <option value="3">Serratus anterior</option>
+                    <option value="4">Pectoralis major</option>
+                    <option value="5">Triceps brachii</option>
+                    <option value="6">Rectus abdominis</option>
+                    <option value="7">Gastrocnemius</option>
+                    <option value="8">Gluteus maximus</option>
+                    <option value="9">Trapezius</option>
+                    <option value="10">Quadriceps femoris</option>
+                    <option value="11">Biceps femoris</option>
+                    <option value="12">Latissimus dorsi</option>
+                    <option value="13">Brachialis</option>
+                    <option value="14">Obliquus externus abdominis</option>
+                    <option value="15">Soleus</option>
+
+
+                </select>
+            </form>
+            <button class="btn btn-primary btn-block"
+                    ng-click="model.searchExercise(model.muscle)">
+                Search
+            </button>
+
+            <ul class="list-group">
+                <li ng-repeat="exercise in model.exercises"
+                    ng-click="model.searchDetails(exercise.id)"
+                    class="list-group-item">
+                    {{exercise.name}}
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="col-xs-6">
+            <h2>Details</h2>
+            <h4>{{model.exercise.name}}</h4>
+            <div id="description"></div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
