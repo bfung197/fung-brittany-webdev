@@ -31,7 +31,7 @@
 
         function createWidget(widget) {
             var widget = {};
-            widget.widgetType = model.type;
+            widget.type = model.type;
             widgetService
                 .createWidget(model.pageId, widget)
                 .then(function(widget) {

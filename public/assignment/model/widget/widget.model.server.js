@@ -19,7 +19,7 @@ function createWidgetForPage(pageId, widget) {
     widget._page = pageId;
     return widgetModel
         .create(widget)
-        .then( function (widget) {
+        .then(function (widget) {
             pageModel
                 .findPageById(pageId)
                 .then(function (page) {

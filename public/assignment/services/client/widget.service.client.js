@@ -32,7 +32,7 @@
         }
 
         function deleteWidget(widgetId) {
-            var url ="/api/widget/" + widgetId;
+            var url = "/api/widget/" + widgetId;
             return $http.delete(url)
                 .then(function (response) {
                     return response.data;
@@ -48,7 +48,7 @@
         }
 
         function findAllWidgetsForPage(pageId) {
-            var url = "/api/page/"+ pageId +"/widget";
+            var url = "/api/page/" + pageId + "/widget";
             return $http.get(url)
                 .then(function (response) {
                     return response.data;
@@ -56,16 +56,19 @@
         }
 
         function uploadImage() {
-            var url ="/api/upload";
+            var url = "/api/upload";
             return $http.post(url)
                 .then(function (response) {
                     return response.data;
                 });
         }
 
-        function orderWidgets(initial, final, pageId) {
-            var url = "/page/" + pageId + "/widget?initial=" + initial +"&final=" + final;
-            return $http.put(url)
+        function orderWidgets(initial, final) {
+            var url = "/page/" + $routeParams['pageId'] + "/widget?initial=" + initial + "&final=" + final;
+            console.log(url);
+            return $http
+                .put(url);
+
         }
     }
 })();
