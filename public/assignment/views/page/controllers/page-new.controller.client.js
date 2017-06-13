@@ -15,24 +15,22 @@
         function init() {
             pageService
                 .findAllPagesForWebsite(model.websiteId)
-                .then(function(pages) {
-                    model.pages = pages;
-                })
+                .then(renderPages())
         }
-
         init();
 
         // implementation
         function createPage(page) {
-            page.websiteId = model.websiteId;
 
             pageService
-                .createPage(page)
-                .then(goToPages);
+                .createPage(model.websiteId, page)
+                .then(function(page) {
+                    $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
+                });
         }
 
-        function goToPages() {
-            $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
+        function renderPages(pages) {
+            model.pages = pages;
         }
     }
 })();

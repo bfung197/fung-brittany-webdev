@@ -18,7 +18,7 @@ function createWebsiteForUser(userId, website) {
     website._user = userId;
     return websiteModel
         .create(website)
-        .then(function (website) {
+        .then(function(website) {
             return userModel
                 .addWebsite(userId, website._id)
         })

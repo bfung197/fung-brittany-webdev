@@ -18,7 +18,7 @@ function createPage(req, res) {
     var websiteId = req.params.websiteId;
     page._website = websiteId;
     pageModel
-        .createPage(websiteId, page)
+        .createPageForWebsite(websiteId, page)
         .then(function(page) {
             res.json(page);
         });

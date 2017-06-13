@@ -14,9 +14,8 @@
             deletePage: deletePage
         };
 
-        function createPage(page, websiteId) {
-            var url = "/api/website/" + websiteId + "/page";
-            return $http.post(url, page)
+        function createPage(websiteId, page) {
+            return $http.post("/api/website/" + websiteId + "/page", page)
                 .then(function (response) {
                     return response.data;
                 })

@@ -35,10 +35,12 @@
 
         function updatePage(page) {
             pageService
-                .updatePage(model.pageId, page)
-                .then(function() {
-                    $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
-                })
+                .updatePage(page._id, page)
+                .then(goToPages())
+        }
+
+        function goToPages() {
+            $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
         }
 
         function deletePage(pageId) {

@@ -28,10 +28,6 @@
                 });
         }
 
-        function goToWebsites() {
-            $location.url('/user/' + model.userId + '/website');
-        }
-
         function renderWebsites(websites) {
             model.websites = websites
         }
