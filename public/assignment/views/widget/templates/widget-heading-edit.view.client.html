@@ -1,19 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<body>
+<label for="name">Name</label>
+<input type="text"
+       class="form-control"
+       id="name"
+       placeholder="heading name"
+       ng-model="model.widget.name">
+<label for="text">Text</label>
+<input type="text"
+       class="form-control"
+       id="text"
+       placeholder="Text"
+       ng-model="model.widget.text">
 
-    <h1></h1>
-    <form>
-
-        <label for="size">Size</label>
-        <select class="form-control" id="size" style="margin-bottom:10px">
-            <option value="1">1 (Extra Large)</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6 (Extra Small)</option>
-        </select>
-    </form>
-
-</body>
+<label for="size">Size</label>
+<select ng-model="model.widget.size" class="form-control" id="size" style="margin-bottom:10px">
+    <option value="1">1 (Extra Large)</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6 (Extra Small)</option>
+</select>
