@@ -18,21 +18,23 @@
 
 <div class="container-fluid list-padding">
     <a class="list-group">
-        <li class="list-group-item">
-            <a ng-model="model.widgetType"
-                    ng-click="model.createWidget(widget, YOUTUBE)">
-                Youtube</a></li>
-        <li class="list-group-item">
-            <a ng-model="model.widgetType"
-                    ng-click="model.createWidget(widget, HEADING)">
-                Heading </a></li>
-        <li class="list-group-item">
-            <a ng-model="model.widgetType"
-                    ng-click="model.createWidget(widget, IMAGE)">
-                Image</a></li>
+        <div class="widget-choose">
+            <a ng-click="model.widgetType(YOUTUBE); model.createWidget(widget)">
+                Youtube</a></div>
+        <div class="widget-choose">
+            <a ng-click="model.widgetType(HEADING); model.createWidget(widget)">
+                Heading </a></div>
+        <div class="widget-choose">
+            <a ng-click="model.widgetType(IMAGE); model.createWidget(widget)">
+                Image</a></div>
+        <div class="widget-choose">
+            <a ng-click="model.widgetType(TEXT); model.createWidget(widget)">
+                Text</a></div>
+        <div class="widget-choose">
+            <a ng-click="model.widgetType(HTML); model.createWidget(widget)">
+                HTML</a></div>
 
     </a>
-    </ul>
 </div>
 
 <nav class="navbar navbar-inverse navbar-fixed-bottom">

@@ -15,7 +15,7 @@
             orderWidgets: orderWidgets
         };
 
-        function createWidget(widget) {
+        function createWidget(pageId, widget) {
             var url = "/api/page/" + pageId + "/widget";
             return $http.post(url, widget)
                 .then(function (response) {

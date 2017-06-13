@@ -31,17 +31,18 @@
         function updateWidget(widget) {
             widgetService
                 .updateWidget(widget._id, widget)
-                .then(goToWidgets)
+                .then(function(widget) {
+                    $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget');
+                })
         }
 
         function deleteWidget(widget) {
             widgetService
                 .deleteWidget(widget._id)
-                .then(goToWidgets)
-        }
+                .then(function(status) {
+                    $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget');
 
-        function goToWidgets() {
-            $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget');
+                })
         }
     }
 

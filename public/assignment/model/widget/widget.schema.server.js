@@ -1,10 +1,8 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/webdev_summer1_2017');
-mongoose.Promise = require('q').Promise;
 
-widgetSchema = mongoose.Schema({
-    _page: Page,
-    type: String, enum,
+var widgetSchema = mongoose.Schema({
+    _page: {type: mongoose.Schema.ObjectId, ref: "PageModel"},
+    type: {type: String, enum :["YOUTUBE", "IMAGE", "INPUT", "HEADING", "HTML"]},
     name: String,
     text: String,
     placeholder: String,
@@ -18,5 +16,7 @@ widgetSchema = mongoose.Schema({
     icon: String,
     deleteable: Boolean,
     formatted: Boolean,
-    dateCreated: Date
+    dateCreated: {type: Date, default: Date.now}
 }, {collection:'widget'});
+
+module.exports = widgetSchema;

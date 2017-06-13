@@ -12,6 +12,7 @@
 
         // event handlers
         model.createWidget = createWidget;
+        model.widgetType = widgetType;
 
         function init() {
             widgetService
@@ -24,14 +25,18 @@
         init();
 
         // implementation
-        function createWidget(widget, widgetType) {
-            widget.pageId = model.pageId;
-            widget.widgetType = widgetType;
+        function widgetType(type) {
+            model.type = type;
+        }
+
+        function createWidget(widget) {
+            var widget = {};
+            widget.widgetType = model.type;
             widgetService
-                .createWidget(widget)
-                .then(function() {
+                .createWidget(model.pageId, widget)
+                .then(function(widget) {
                     $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget/' + widget._id);
-                })
+                });
         }
     }
 })();

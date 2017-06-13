@@ -1,23 +1,21 @@
 (function () {
     angular
-        .module('wbdvDirectives', ['WAM'])
+        .module('wbdvDirectives', ['ngRoute'])
         .directive('wbdvSortable', wbdvSortable)
 
     function wbdvSortable(widgetService) {
         function linkFunction(scope, element) {
-            var initial = 0;
+            var initial = -1;
+            var final = -1;
             $(element).sortable({
-                cursor: move
-            },
-                {
-                    start: function(event, ui) {
-                        initial = $("this").index(ui.item);
-                    }
+                    axis: 'y',
+                    start: function (event, ui) {
+                        initial = ui.item.index();
                 },
-                {
-                    stop: function(event, ui) {
-                        var final = $("this").index(ui.item);
-                        widgetService.orderWidgets(initial, final);
+                    stop: function (event, ui) {
+                        var final = ui.item.index();
+                        widgetService
+                            .orderWidgets(initial, final);
                     }
 
                 }
