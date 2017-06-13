@@ -13,9 +13,8 @@
             deleteWebsite: deleteWebsite
         };
 
-        function createWebsite(website, userId) {
-            var url = "/api/user/" + userId + "/website";
-            return $http.post(url, website)
+        function createWebsite(userId, website) {
+            return $http.post("/api/user/" + userId + "/website", website)
                 .then(function (response) {
                     return response.data;
                 })

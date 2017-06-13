@@ -36,9 +36,6 @@
                 .then(goToWebsites);
         }
 
-        function renderWebsites(websites) {
-            model.websites = websites
-        }
 
         function goToWebsites () {
             $location.url('/user/' + model.userId + '/website');
@@ -47,7 +44,7 @@
         function deleteWebsite(websiteId) {
             websiteService
                 .deleteWebsite(websiteId)
-                .then(goToWebsites);
+                .then(goToWebsites());
         }
     }
 })();

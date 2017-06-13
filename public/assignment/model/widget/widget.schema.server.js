@@ -19,4 +19,4 @@ widgetSchema = mongoose.Schema({
     deleteable: Boolean,
     formatted: Boolean,
     dateCreated: Date
-}, {collection:'widgets'});
+}, {collection:'widget'});

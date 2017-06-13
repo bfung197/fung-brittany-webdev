@@ -19,12 +19,13 @@
         init();
 
         // implementation
-        function createWebsite(website, userId) {
-            website.developerId = model.userId;
+        function createWebsite(website) {
 
             websiteService
-                .createWebsite(website)
-                .then(goToWebsites);
+                .createWebsite(model.userId, website)
+                .then(function(website) {
+                    $location.url('/user/' + model.userId + '/website');
+                });
         }
 
         function goToWebsites() {
