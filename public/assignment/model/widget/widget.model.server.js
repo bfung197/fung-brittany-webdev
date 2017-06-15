@@ -39,7 +39,7 @@ function findAllWidgetsForPage(pageId) {
 
 function findWidgetById(widgetId) {
     return widgetModel
-        .findById(widgetId);
+        .findOne({_id: widgetId});
 }
 
 function updateWidget(widgetId, widget) {

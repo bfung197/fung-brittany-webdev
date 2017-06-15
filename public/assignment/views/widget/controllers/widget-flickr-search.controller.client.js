@@ -1,19 +1,29 @@
 (function () {
     angular
-        .module("WAM")
+        .module('WAM')
         .controller("flickrImageSearchController", flickrImageSearchController);
 
     function flickrImageSearchController(flickrService, widgetService, $location, $routeParams) {
 
         var model = this;
-        model.userId = $routeParams['uid'];
-        model.websiteId = $routeParams['wid'];
-        model.pageId = $routeParams['pid'];
-        model.widgetId = $routeParams['wgid'];
 
 
         model.searchPhotos = searchPhotos;
         model.selectPhoto = selectPhoto;
+
+        function init() {
+            model.userId = $routeParams.uid;
+            model.websiteId = $routeParams.wid;
+            model.pageId = $routeParams.pid;
+            model.widgetId = $routeParams.wgid;
+
+            widgetService
+                .findWidgetById(model.widgetId)
+                .then(function(response) {
+                    model.widget = response;
+                });
+        }
+        init();
 
         function searchPhotos(searchTerm) {
             flickrService
@@ -27,15 +37,15 @@
         }
 
         function selectPhoto(photo) {
-            var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server;
-            url += "/" + photo.id + "_" + photo.secret + "_b.jpg";
+            model.widget.url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + "_b.jpg";
             widgetService
-                .updateWidget(websiteId, pageId, widgetId, {url: url})
+                .updateWidget(model.widgetId, model.widget)
                 .then(goToWidgets);
         }
 
         function goToWidgets() {
-            $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget');
+            $location
+                .url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget');
         }
 
     }

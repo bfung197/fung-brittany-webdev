@@ -1,6 +1,6 @@
 (function () {
     angular
-        .module('WAM')
+        .module('WAM', ['ngRoute'])
         .directive('wbdvSortable', wbdvSortable);
 
     function wbdvSortable(widgetService) {

@@ -40,16 +40,8 @@
             <ng-include src="'views/widget/templates/widget-html-edit.view.client.html'"></ng-include>
         </div>
         <div ng-switch-when="TEXT">
-            Text
-            <input ng-model="model.widget.text" class="form-control"/>
-            Rows
-            <input ng-model="model.widget.rows" class="form-control" type="number"/>
-            Placeholder
-            <input ng-model="model.widget.placeholder" class="form-control"/>
-            Formatted
-            <input ng-model="model.widget.formatted" type="checkbox"/>
+            <ng-include src="views/widget/templates/widget-text-edit.view.client.html"></ng-include>
         </div>
-
     </div>
 
     <div>

@@ -9,6 +9,7 @@
         model.userId = $routeParams['uid'];
         model.websiteId = $routeParams['wid'];
         model.pageId = $routeParams['pid'];
+        model.widgetId = $routeParams['wgid'];
 
         // event handlers
         model.createWidget = createWidget;
@@ -26,19 +27,19 @@
         function createWidget(widgetType) {
             switch (widgetType) {
                 case "HEADING":
-                    widget =  {'name': '', 'type': widgetType, '_page': model.pageId, 'size': '', 'text': '', 'order': 1000};
+                    widget =  {'_id' : model.widgetId, 'name': '', 'type': widgetType, '_page': model.pageId, 'size': '', 'text': '', 'order': 1000};
                     break;
                 case "IMAGE":
-                    widget =  {'name': '', 'type': widgetType, '_page': model.pageId, 'width': '', 'url': '', 'text': '', 'order': 1000};
+                    widget =  {'_id' : model.widgetId, 'name': '', 'type': widgetType, '_page': model.pageId, 'width': '', 'url': '', 'text': '', 'order': 1000};
                     break;
                 case "YOUTUBE":
-                    widget =  {'name': '', 'type': widgetType, '_page': model.pageId, 'width': '', 'url': '', 'text': '', 'order': 1000};
+                    widget =  {'_id' : model.widgetId, 'name': '', 'type': widgetType, '_page': model.pageId, 'width': '', 'url': '', 'text': '', 'order': 1000};
                     break;
                 case "TEXT":
-                    widget =  {'name': '', 'type': widgetType, '_page': model.pageId, 'rows': '', 'placeholder': '', 'formatted': '', 'order': 1000};
+                    widget =  {'_id' : model.widgetId, 'name': '', 'type': widgetType, '_page': model.pageId, 'rows': '', 'placeholder': '', 'formatted': '', 'order': 1000};
                     break;
                 case "HTML":
-                    widget =  {'name': '', 'type': widgetType, '_page': model.pageId, 'text': '', 'order': 1000};
+                    widget =  {'_id' : model.widgetId, 'name': '', 'type': widgetType, '_page': model.pageId, 'text': '', 'order': 1000};
                     break;
                 default:
                     break;

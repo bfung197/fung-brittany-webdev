@@ -37,7 +37,6 @@
         }
 
         function trustThisContent(html) {
-            // diligence to scrub any unsafe content
             return $sce.trustAsHtml(html);
         }
     }

@@ -45,13 +45,14 @@ function uploadImage(req, res) {
 }
 
 function createWidget(req, res) {
-    var pageId = req.params.pageId;
+    var pageId = req.params['pageId'];
     var widget = req.body;
     widgetModel
         .createWidgetForPage(pageId, widget)
         .then(function (widget) {
             res.json(widget);
         });
+    console.log(widget);
 }
 
 function findAllWidgetsForPage(req, res) {
@@ -67,12 +68,10 @@ function findAllWidgetsForPage(req, res) {
 }
 
 function findWidgetById(req, res) {
-    var widgetId = req.params['widgetId'];
-
     widgetModel
-        .findWidgetById(widgetId)
+        .findWidgetById(req.params.widgetId)
         .then(function (widget) {
-            res.json(widget);
+            res.send(widget);
         }, function (err) {
             res.sendStatus(404);
         });
