@@ -1,13 +1,13 @@
 (function () {
     angular
-        .module('wbdvDirectives', ['ngRoute'])
-        .directive('wbdvSortable', wbdvSortable)
+        .module('WAM')
+        .directive('wbdvSortable', wbdvSortable);
 
     function wbdvSortable(widgetService) {
+        var initial = -1;
+        var final = -1;
         function linkFunction(scope, element) {
-            var initial = -1;
-            var final = -1;
-            $(element).sortable({
+            element.sortable({
                     axis: 'y',
                     start: function (event, ui) {
                         initial = ui.item.index();

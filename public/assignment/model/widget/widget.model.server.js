@@ -82,7 +82,6 @@ function reorderWidget(pageId, initial, final) {
         .findPageById(pageId)
         .then(function (page) {
             var widgets = page.widgets;
-
             var index = widgets.splice(initial,1)[0];
             widgets.splice(final,0, index);
             page.widgets = widgets;
