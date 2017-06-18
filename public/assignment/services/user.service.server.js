@@ -14,13 +14,13 @@ var facebookConfig = {
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
 passport.use(new LocalStrategy(localStrategy));
-//passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
-passport.use(new FacebookStrategy({
-    clientID : '476004756079445',
-    clientSecret : '4297a5e6055fdd7dddae88dd40bc2a06',
-    callbackURL : 'http://localhost:3000/auth/facebook/callback',
-    profileFields : ['id', 'emails','name']
-}, facebookStrategy));
+passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
+// passport.use(new FacebookStrategy({
+//     clientID : '476004756079445',
+//     clientSecret : '4297a5e6055fdd7dddae88dd40bc2a06',
+//     callbackURL : 'http://localhost:3000/auth/facebook/callback',
+//     profileFields : ['id', 'emails','name']
+// }, facebookStrategy));
 
 
 app.get('/api/users', findAllUsers);
