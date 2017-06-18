@@ -7,7 +7,6 @@
 
         var model = this;
         model.login = login;
-        model.logout = logout;
 
         function login(username, password) {
 
