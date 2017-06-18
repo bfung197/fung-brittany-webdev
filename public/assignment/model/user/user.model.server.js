@@ -12,9 +12,15 @@ userModel.deleteUser = deleteUser;
 userModel.addWebsite = addWebsite;
 userModel.removeWebsite = removeWebsite;
 userModel.findUserByFacebookId = findUserByFacebookId;
+userModel.findAllUsers = findAllUsers;
 
 module.exports = userModel;
 
+
+function findAllUsers() {
+    return userModel
+        .find();
+}
 
 function createUser(user) {
     return userModel

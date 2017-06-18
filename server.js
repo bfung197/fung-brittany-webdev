@@ -12,6 +12,11 @@ app.use(app.express.static(__dirname + '/public'));
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.get('/api/session', function(req, res) {
+    console.log(req.session);
+    res.send(req.session);
+});
+
 require ("./test/app.js")(app);
 
 require ("./public/assignment/app.js");

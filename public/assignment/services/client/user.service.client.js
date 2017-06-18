@@ -13,8 +13,18 @@
             deleteUser: deleteUser,
             login: login,
             logout: logout,
-            register: register
+            register: register,
+            findAllUsers : findAllUsers
         };
+
+        function findAllUsers() {
+            var url = "/api/users";
+            return $http.get(url)
+                .then(function(response) {
+                    return response.data;
+                })
+
+        }
 
         function register(user) {
             return $http.post("/api/register", user);

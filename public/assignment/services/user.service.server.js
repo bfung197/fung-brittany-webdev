@@ -4,10 +4,21 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 
+var facebookConfig = {
+    clientID : process.env.FACEBOOK_CLIENT_ID,
+    clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+    callbackURL : process.env.FACEBOOK_CALLBACK_URL,
+    profileFields : ['id', 'email','name']
+};
+
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
 passport.use(new LocalStrategy(localStrategy));
+passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
 
+
+
+app.get('/api/users', findAllUsers);
 app.post('/api/user', createUser);
 app.get('/api/user?username=username', findUserByUsername);
 app.get('/api/user', findUserByCredentials);
@@ -21,9 +32,41 @@ app.get ('/api/loggedIn', loggedIn);
 app.get ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
 app.get('/auth/facebook/callback',
     passport.authenticate('facebook', {
-        successRedirect: '/#/user',
-        failureRedirect: '/#/login'
+        successRedirect: '/assignment/index.html',
+        failureRedirect: '/assignment/index.html#!/'
     }));
+
+function findAllUsers(req, res) {
+    var username = req.query['username'];
+    var password = req.query.password;
+    if(username && password) {
+        userModel
+            .findUserByCredentials(username, password)
+            .then(function (user) {
+                if(user) {
+                    res.json(user);
+                } else {
+                    res.sendStatus(404);
+                }
+            });
+    } else if(username) {
+        userModel
+            .findUserByUsername(username)
+            .then(function (user) {
+                if(user) {
+                    res.json(user);
+                } else {
+                    res.sendStatus(404);
+                }
+            });
+    } else {
+        userModel
+            .findAllUsers()
+            .then(function (users) {
+                res.json(users);
+            });
+    }
+}
 
 function findUserByUsername(req, res) {
     var username = req.params['username'];
@@ -160,3 +203,40 @@ function loggedIn(req, res) {
     res.send(req.isAuthenticated() ? req.user : '0');
 }
 
+
+function facebookStrategy(token, refreshToken, profile, done) {
+    userModel
+        .findUserByFacebookId(profile.id)
+        .then(
+            function(user) {
+                if(user) {
+                    return done(null, user);
+                } else {
+                    var email = profile.email[0].value;
+                    var emailParts = email.split("@");
+                    var facebookUser  = {
+                        username:  emailParts[0],
+                        firstName: profile.name.givenName,
+                        lastName:  profile.name.familyName,
+                        email:     email,
+                        facebook: {
+                            id:    profile.id,
+                            token: token
+                        }
+                    };
+                    return userModel.createUser(facebookUser);
+                }
+            },
+            function(err) {
+                if (err) { return done(err); }
+            }
+        )
+        .then(
+            function(user){
+                return done(null, user);
+            },
+            function(err){
+                if (err) { return done(err); }
+            }
+        );
+}
