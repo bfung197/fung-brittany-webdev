@@ -8,14 +8,19 @@ var facebookConfig = {
     clientID : process.env.FACEBOOK_CLIENT_ID,
     clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
     callbackURL : process.env.FACEBOOK_CALLBACK_URL,
-    profileFields : ['id', 'email','name']
+    profileFields : ['id', 'emails','name']
 };
 
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
 passport.use(new LocalStrategy(localStrategy));
-passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
-
+//passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
+passport.use(new FacebookStrategy({
+    clientID : '476004756079445',
+    clientSecret : '4297a5e6055fdd7dddae88dd40bc2a06',
+    callbackURL : 'http://localhost:3000/auth/facebook/callback',
+    profileFields : ['id', 'emails','name']
+}, facebookStrategy));
 
 
 app.get('/api/users', findAllUsers);
@@ -207,36 +212,27 @@ function loggedIn(req, res) {
 function facebookStrategy(token, refreshToken, profile, done) {
     userModel
         .findUserByFacebookId(profile.id)
-        .then(
-            function(user) {
-                if(user) {
-                    return done(null, user);
-                } else {
-                    var email = profile.email[0].value;
-                    var emailParts = email.split("@");
-                    var facebookUser  = {
-                        username:  emailParts[0],
-                        firstName: profile.name.givenName,
-                        lastName:  profile.name.familyName,
-                        email:     email,
-                        facebook: {
-                            id:    profile.id,
-                            token: token
-                        }
-                    };
-                    return userModel.createUser(facebookUser);
-                }
-            },
-            function(err) {
-                if (err) { return done(err); }
+        .then(function (user) {
+            if (!user) {
+                var newUser = {
+                    username: profile.displayName,
+                    facebook: {
+                        id: profile.id,
+                        token: token
+                    }
+                };
+
+                return userModel
+                    .createUser(newUser)
+                    .then(function (response) {
+                        return done(null, response);
+                    })
+            } else {
+                return userModel
+                    .updateFacebookToken(user._id, profile.id, token)
+                    .then(function (response) {
+                        return done(null, user);
+                    })
             }
-        )
-        .then(
-            function(user){
-                return done(null, user);
-            },
-            function(err){
-                if (err) { return done(err); }
-            }
-        );
+        })
 }

@@ -4,18 +4,16 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 
-app.use(cookieParser());
-app.use(session({secret: process.env.SESSION_SECRET}));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(app.express.static(__dirname + '/public'));
+
+app.use(cookieParser());
+//app.use(session({secret: process.env.SESSION_SECRET}));
+app.use(session({secret: 'bfwbdvss'}));
 app.use(passport.initialize());
 app.use(passport.session());
-
-app.get('/api/session', function(req, res) {
-    console.log(req.session);
-    res.send(req.session);
-});
 
 require ("./test/app.js")(app);
 
