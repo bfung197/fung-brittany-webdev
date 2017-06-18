@@ -1,5 +1,12 @@
 var app = require('../../../express');
 var userModel = require('../model/user/user.model.server');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
+
+passport.serializeUser(serializeUser);
+passport.deserializeUser(deserializeUser);
+passport.use(new LocalStrategy(localStrategy));
 
 app.post('/api/user', createUser);
 app.get('/api/user?username=username', findUserByUsername);
@@ -7,13 +14,16 @@ app.get('/api/user', findUserByCredentials);
 app.get('/api/user/:uid', findUserById);
 app.put('/api/user/:uid', updateUser);
 app.delete('/api/user/:uid', deleteUser);
-
-var users = [
-    {_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder"},
-    {_id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley"},
-    {_id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia"},
-    {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi"}
-];
+app.post  ('/api/login', passport.authenticate('WAM'), login);
+app.post('/api/logout', logout);
+app.post ('/api/register', register);
+app.get ('/api/loggedIn', loggedIn);
+app.get ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
+app.get('/auth/facebook/callback',
+    passport.authenticate('facebook', {
+        successRedirect: '/#/user',
+        failureRedirect: '/#/login'
+    }));
 
 function findUserByUsername(req, res) {
     var username = req.params['username'];
@@ -82,3 +92,71 @@ function findUserById(req, res) {
             res.json(user);
         });
 }
+
+function serializeUser(user, done) {
+    done(null, user);
+}
+
+function deserializeUser(user, done) {
+    developerModel
+        .findDeveloperById(user._id)
+        .then(
+            function(user){
+                done(null, user);
+            },
+            function(err){
+                done(err, null);
+            }
+        );
+}
+
+function localStrategy(username, password, done) {
+    userModel
+        .findUserByCredentials(username, password)
+        .then(
+            function(user) {
+                if(user.username === username && user.password === password) {
+                    return done(null, user);
+                } else {
+                    return done(null, false);
+                }
+            },
+            function(err) {
+                if (err) { return done(err); }
+            }
+        );
+}
+
+function login(req, res) {
+    var user = req.user;
+    res.json(user);
+}
+
+function logout(req, res) {
+    req.logOut();
+    res.send(200);
+}
+
+function register (req, res) {
+    var user = req.body;
+    userModel
+        .createUser(user)
+        .then(
+        function(user){
+            if(user){
+                req.login(user, function(err) {
+                    if(err) {
+                        res.status(400).send(err);
+                    } else {
+                        res.json(user);
+                    }
+                });
+            }
+        }
+    );
+}
+
+function loggedIn(req, res) {
+    res.send(req.isAuthenticated() ? req.user : '0');
+}
+

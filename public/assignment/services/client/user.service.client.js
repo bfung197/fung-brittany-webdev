@@ -9,10 +9,24 @@
             createUser: createUser,
             findUserByCredentials: findUserByCredentials,
             findUserById: findUserById,
-            findUserByUsername: findUserByUsername,
             updateUser: updateUser,
-            deleteUser: deleteUser
+            deleteUser: deleteUser,
+            login: login,
+            logout: logout,
+            register: register
         };
+
+        function register(user) {
+            return $http.post("/api/register", user);
+        }
+
+        function logout() {
+            return $http.post("/api/logout");
+        }
+
+        function login(user) {
+            return $http.post("/api/login", user);
+        }
 
         function createUser(user) {
             var url = "/api/user";
@@ -20,15 +34,6 @@
                 .then(function (response) {
                     return response.data;
                 })
-        }
-
-        function findUserByUsername(username) {
-            var user = users.find(function (user) {
-                return user.username === username;
-            });
-            if (typeof user === 'undefined')
-                return null;
-            return user;
         }
 
         function updateUser(userId, user) {

@@ -52,7 +52,6 @@ function createWidget(req, res) {
         .then(function (widget) {
             res.json(widget);
         });
-    console.log(widget);
 }
 
 function findAllWidgetsForPage(req, res) {

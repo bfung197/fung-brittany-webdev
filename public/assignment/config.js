@@ -70,5 +70,25 @@
                 controller: 'flickrImageSearchController',
                 controllerAs: 'model'
             })
+            .when ("/profile", {
+                templateUrl: "views/user/profile.view.client.html",
+                controller: "ProfileController",
+                controllerAs: "model",
+                resolve: {loggedIn: checkLoggedIn}
+            })
     }
+
+    var checkLoggedIn = function($q, $timeout, $http, $location, $rootScope) {
+        var deferred = $q.defer();
+        $http.get('/api/loggedIn').success(function(user) {
+            $rootScope.errorMessage = null;
+            if (user !== '0') {
+                deferred.resolve(user);
+            } else {
+                deferred.reject();
+                $location.url('/');
+            }
+        });
+        return deferred.promise;
+    };
 })();

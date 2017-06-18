@@ -3,7 +3,7 @@
         .module('WAM')
         .controller('registerController', registerController);
 
-    function registerController($location, userService) {
+    function registerController($location, userService, $rootScope) {
 
         var model = this;
 
@@ -27,14 +27,14 @@
                     username: username,
                     password: password
                 };
-                // model.message = user;
                 userService
-                    .createUser(user)
-                    .then(goToProfile);
-
-                function goToProfile (user) {
-                    $location.url('/user/' + user._id);
-                }
+                    .register(user)
+                    .then(
+                        function(response) {
+                            var user = response.data;
+                            $rootScope.currentUser = user;
+                            $location.url("/user/"+user._id);
+                        })
             }
         }
     }

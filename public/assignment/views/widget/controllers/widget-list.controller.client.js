@@ -24,7 +24,6 @@
         init();
 
         function getWidgetUrlForType(type) {
-            console.log(type.toLowerCase());
             return 'views/widget/templates/widget-' + type.toLowerCase() + '.view.client.html';
         }
 

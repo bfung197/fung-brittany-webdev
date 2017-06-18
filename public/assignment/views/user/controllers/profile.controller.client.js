@@ -10,6 +10,7 @@
         model.userId = $routeParams['uid'];
         model.updateUser = updateUser;
         model.deleteUser = deleteUser;
+        model.logout = logout;
 
         userService
             .findUserById(model.userId)
@@ -33,6 +34,15 @@
                 .then(function () {
                     $location.url('/');
                 })
+        }
+
+        function logout() {
+            userService
+                .logout()
+                .then(
+                    function (response) {
+                        $location.url("/");
+                    })
         }
     }
 })();

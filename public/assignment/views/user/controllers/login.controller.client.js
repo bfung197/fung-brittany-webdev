@@ -7,6 +7,7 @@
 
         var model = this;
         model.login = login;
+        model.logout = logout;
 
         function login(username, password) {
 
@@ -18,12 +19,14 @@
                 model.message = "Unable to log in.";
             }
 
-            function login(found) {
-                if (found !== null) {
-                    $location.url('/user/' + found._id);
-                } else {
-                    model.message = "Unable to log in.";
-                }
+            function login(user) {
+                userService
+                    .login(user)
+                    .then(
+                        function (response) {
+                            var user = response.data;
+                            $location.url("/profile");
+                        })
             }
         }
     }
