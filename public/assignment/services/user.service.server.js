@@ -146,8 +146,8 @@ function serializeUser(user, done) {
 }
 
 function deserializeUser(user, done) {
-    developerModel
-        .findDeveloperById(user._id)
+    userModel
+        .findUserById(user._id)
         .then(
             function(user){
                 done(null, user);
