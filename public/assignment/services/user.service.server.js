@@ -5,10 +5,10 @@ var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 
 var facebookConfig = {
-    clientID : process.env.FACEBOOK_CLIENT_ID,
-    clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL : process.env.FACEBOOK_CALLBACK_URL,
-    profileFields : ['id', 'emails','name']
+    clientID: process.env.FACEBOOK_CLIENT_ID,
+    clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+    callbackURL: process.env.FACEBOOK_CALLBACK_URL,
+    profileFields: ['id', 'emails', 'name']
 };
 
 passport.serializeUser(serializeUser);
@@ -30,11 +30,11 @@ app.get('/api/user', findUserByCredentials);
 app.get('/api/user/:uid', findUserById);
 app.put('/api/user/:uid', updateUser);
 app.delete('/api/user/:uid', deleteUser);
-app.post  ('/api/login', passport.authenticate('WAM'), login);
+app.post('/api/login', passport.authenticate('WAM'), login);
 app.post('/api/logout', logout);
-app.post ('/api/register', register);
-app.get ('/api/loggedIn', loggedIn);
-app.get ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
+app.post('/api/register', register);
+app.get('/api/loggedIn', loggedIn);
+app.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));
 app.get('/auth/facebook/callback',
     passport.authenticate('facebook', {
         successRedirect: '/assignment/index.html',
@@ -44,21 +44,21 @@ app.get('/auth/facebook/callback',
 function findAllUsers(req, res) {
     var username = req.query['username'];
     var password = req.query.password;
-    if(username && password) {
+    if (username && password) {
         userModel
             .findUserByCredentials(username, password)
             .then(function (user) {
-                if(user) {
+                if (user) {
                     res.json(user);
                 } else {
                     res.sendStatus(404);
                 }
             });
-    } else if(username) {
+    } else if (username) {
         userModel
             .findUserByUsername(username)
             .then(function (user) {
-                if(user) {
+                if (user) {
                     res.json(user);
                 } else {
                     res.sendStatus(404);
@@ -120,7 +120,7 @@ function findUserByCredentials(req, res) {
     userModel
         .findUserByCredentials(username, password)
         .then(function (user) {
-            if(user != null) {
+            if (user != null) {
                 res.json(user);
             } else {
                 res.sendStatus(404);
@@ -149,10 +149,10 @@ function deserializeUser(user, done) {
     userModel
         .findUserById(user._id)
         .then(
-            function(user){
+            function (user) {
                 done(null, user);
             },
-            function(err){
+            function (err) {
                 done(err, null);
             }
         );
@@ -162,15 +162,17 @@ function localStrategy(username, password, done) {
     userModel
         .findUserByCredentials(username, password)
         .then(
-            function(user) {
-                if(user.username === username && user.password === password) {
+            function (user) {
+                if (user.username === username && user.password === password) {
                     return done(null, user);
                 } else {
                     return done(null, false);
                 }
             },
-            function(err) {
-                if (err) { return done(err); }
+            function (err) {
+                if (err) {
+                    return done(err);
+                }
             }
         );
 }
@@ -185,23 +187,23 @@ function logout(req, res) {
     res.send(200);
 }
 
-function register (req, res) {
+function register(req, res) {
     var user = req.body;
     userModel
         .createUser(user)
         .then(
-        function(user){
-            if(user){
-                req.login(user, function(err) {
-                    if(err) {
-                        res.status(400).send(err);
-                    } else {
-                        res.json(user);
-                    }
-                });
+            function (user) {
+                if (user) {
+                    req.login(user, function (err) {
+                        if (err) {
+                            res.status(400).send(err);
+                        } else {
+                            res.json(user);
+                        }
+                    });
+                }
             }
-        }
-    );
+        );
 }
 
 function loggedIn(req, res) {
@@ -213,26 +215,40 @@ function facebookStrategy(token, refreshToken, profile, done) {
     userModel
         .findUserByFacebookId(profile.id)
         .then(function (user) {
-            if (!user) {
-                var newUser = {
-                    username: profile.displayName,
-                    facebook: {
-                        id: profile.id,
-                        token: token
-                    }
-                };
+                if (user) {
+                    return done(null, user);
+                } else {
+                    var email = profile.emails[0].value;
+                    var emailParts = email.split("@");
+                    var facebookUser = {
+                        username: emailParts[0],
+                        firstName: profile.name.givenName,
+                        lastName: profile.name.familyName,
+                        email: email,
+                        facebook: {
+                            id: profile.id,
+                            token: token
+                        }
+                    };
 
-                return userModel
-                    .createUser(newUser)
-                    .then(function (response) {
-                        return done(null, response);
-                    })
-            } else {
-                return userModel
-                    .updateFacebookToken(user._id, profile.id, token)
-                    .then(function (response) {
-                        return done(null, user);
-                    })
+                    return userModel.createUser(facebookUser)
+                        .then(function (response) {
+                            return done(null, response);
+                        })
+                }
+            },
+            function (err) {
+                if (err) {
+                    return done(err);
+                }
             }
-        })
+        )
+        .then(function (user) {
+                return done(null, user);
+            },
+            function (err) {
+                if (err) {
+                    return done(err);
+                }
+            })
 }
