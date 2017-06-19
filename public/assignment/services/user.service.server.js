@@ -2,7 +2,7 @@ var app = require('../../../express');
 var userModel = require('../model/user/user.model.server');
 var passport = require('passport');
 var bcrypt = require("bcrypt-nodejs");
-var userId = "";
+var userId = null;
 
 
 app.get('/api/users', findAllUsers);
