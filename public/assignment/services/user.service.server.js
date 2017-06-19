@@ -190,13 +190,7 @@ app.get('/auth/facebook/callback', passport.authenticate('facebook', {
     failureRedirect: '/assignment/index.html#!/'
 }));
 
-//passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
-passport.use(new FacebookStrategy({
-    clientID : '476004756079445',
-    clientSecret : '4297a5e6055fdd7dddae88dd40bc2a06',
-    callbackURL : 'http://localhost:3000/auth/facebook/callback',
-    profileFields : ['id', 'emails','name']
-}, facebookStrategy));
+passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
 
 
 function facebookStrategy(token, refreshToken, profile, done) {
