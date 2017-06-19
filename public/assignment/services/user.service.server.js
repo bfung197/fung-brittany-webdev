@@ -67,6 +67,7 @@ function updateUser(req, res) {
 function createUser(req, res) {
     var user = req.body;
     user.password = bcrypt.hashSync(user.password);
+    console.log(user.password);
     userModel
         .createUser(user)
         .then(function (user) {
@@ -182,6 +183,13 @@ var facebookConfig = {
     callbackURL: process.env.FACEBOOK_CALLBACK_URL,
     profileFields: ['id', 'emails', 'name']
 };
+
+app.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));
+app.get('/auth/facebook/callback', passport.authenticate('facebook', {
+    successRedirect: '/assignment/index.html#!/user',
+    failureRedirect: '/assignment/index.html#!/'
+}));
+
 //passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
 passport.use(new FacebookStrategy({
     clientID : '476004756079445',
@@ -190,18 +198,11 @@ passport.use(new FacebookStrategy({
     profileFields : ['id', 'emails','name']
 }, facebookStrategy));
 
-app.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));
-app.get('/auth/facebook/callback', passport.authenticate('facebook', {
-    successRedirect: '/assignment/index.html',
-    failureRedirect: '/assignment/index.html#!/'
-}));
-
 
 function facebookStrategy(token, refreshToken, profile, done) {
     userModel
         .findUserByFacebookId(profile.id)
-        .then(
-            function(user) {
+        .then(function(user) {
                 if(user) {
                     return done(null, user);
                 } else {
