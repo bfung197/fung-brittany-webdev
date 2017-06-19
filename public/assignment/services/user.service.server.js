@@ -206,19 +206,18 @@ function facebookStrategy(token, refreshToken, profile, done) {
                 if(user) {
                     return done(null, user);
                 } else {
-                    var email = profile.emails[0].value;
-                    var emailParts = email.split("@");
                     var facebookUser  = {
-                        username:  emailParts[0],
-                        firstName: profile.name.givenName,
-                        lastName:  profile.name.familyName,
-                        email:     email,
+                        username:  profile.displayName,
                         facebook: {
                             id:    profile.id,
                             token: token
                         }
                     };
-                    return userModel.createUser(facebookUser);
+                    return userModel
+                        .createUser(facebookUser)
+                        .then(function(response) {
+                            return done(null, response);
+                        })
                 }
             },
             function(err) {
