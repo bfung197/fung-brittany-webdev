@@ -33,7 +33,12 @@
 
         // implementation
 
-        function updatePage(page) {
+        function updatePage(page, name) {
+            if(name === null || typeof name==='undefined' || name === ""){
+                model.message="Name is required.";
+                return;
+            }
+
             pageService
                 .updatePage(page._id, page)
                 .then(goToPages())

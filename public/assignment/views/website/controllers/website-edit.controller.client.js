@@ -30,7 +30,12 @@
 
         // implementation
 
-        function updateWebsite(website) {
+        function updateWebsite(website, name) {
+            if(name === null || typeof name==='undefined' || name === ""){
+                model.message="Name is required.";
+                return;
+            }
+
             websiteService
                 .updateWebsite(website._id, website)
                 .then(goToWebsites);

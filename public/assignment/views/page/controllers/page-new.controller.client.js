@@ -20,7 +20,12 @@
         init();
 
         // implementation
-        function createPage(page) {
+        function createPage(page, name) {
+
+            if(name === null || typeof name==='undefined'){
+                model.message="Name is required.";
+                return;
+            }
 
             pageService
                 .createPage(model.websiteId, page)

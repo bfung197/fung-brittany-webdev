@@ -2,7 +2,6 @@
 
 <body>
 
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-4 hidden-xs srollable-left">
@@ -47,6 +46,11 @@
             </ul>
         </div>
         <div class="col-xs-12 col-sm-8">
+
+            <div ng-show="model.message" class="alert alert-danger">
+                {{model.message}}
+            </div>
+
             <label for="name">Name</label>
             <input id="name"
                    ng-model="website.name"
@@ -58,7 +62,7 @@
                       rows="5"
                       class="form-control"></textarea>
 
-            <a ng-click="model.createWebsite(website)"
+            <a ng-click="model.createWebsite(website, website.name)"
                class="btn btn-block btn-success">
                 Create
             </a>

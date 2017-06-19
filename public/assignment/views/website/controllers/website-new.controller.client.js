@@ -19,7 +19,12 @@
         init();
 
         // implementation
-        function createWebsite(website) {
+        function createWebsite(website, name) {
+
+            if(name === null || typeof name==='undefined'){
+                model.message="Name is required.";
+                return;
+            }
 
             websiteService
                 .createWebsite(model.userId, website)

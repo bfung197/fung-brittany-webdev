@@ -21,7 +21,7 @@
             userService
                 .login(username, password)
                 .then(function(user) {
-                    if(user !== null) {
+                    if(user) {
                         $rootScope.currentUser = user;
                         $location.url('/user/' + user._id);
                     }
