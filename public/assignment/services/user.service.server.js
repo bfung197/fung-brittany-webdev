@@ -2,6 +2,7 @@ var app = require('../../../express');
 var userModel = require('../model/user/user.model.server');
 var passport = require('passport');
 var bcrypt = require("bcrypt-nodejs");
+var userId = "";
 
 
 app.get('/api/users', findAllUsers);
@@ -186,7 +187,7 @@ var facebookConfig = {
 
 app.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));
 app.get('/auth/facebook/callback', passport.authenticate('facebook', {
-    successRedirect: '/assignment/index.html#!/user',
+    successRedirect: '/assignment/index.html#!/user/' + userId,
     failureRedirect: '/assignment/index.html#!/'
 }));
 
@@ -216,6 +217,7 @@ function facebookStrategy(token, refreshToken, profile, done) {
                     return userModel
                         .createUser(facebookUser)
                         .then(function(response) {
+                            userId = response._id;
                             return done(null, response);
                         })
                 }
