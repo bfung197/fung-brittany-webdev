@@ -217,7 +217,8 @@ function facebookStrategy(token, refreshToken, profile, done) {
                     return userModel
                         .createUser(facebookUser)
                         .then(function(response) {
-                            userId = response._id;
+                            console.log(response._id);
+                            this.userId = response._id;
                             return done(null, response);
                         })
                 }
