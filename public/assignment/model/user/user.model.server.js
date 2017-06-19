@@ -34,12 +34,12 @@ function findUserById(userId) {
 
 function findUserByUsername(username) {
     return userModel
-        .find({username: username});
+        .findOne({username: username});
 }
 
 function findUserByCredentials(username, password) {
     return userModel
-        .findOne({username: username}, {password: password});
+        .findOne({username: username} && {password: password});
 }
 
 function updateUser(userId, user) {

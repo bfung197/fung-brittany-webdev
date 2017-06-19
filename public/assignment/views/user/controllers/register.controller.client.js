@@ -13,29 +13,31 @@
         // implementation
         function register(username, password, password2) {
 
-            if(password !== password2) {
+            if (password !== password2) {
                 model.error = "Passwords must match";
                 return;
             }
 
-            var found = null;//userService.findUserByUsername(username);
+            userService
+                .findUserByCredentials(username, password)
+                .then(function (found) {
+                    if (found !== null) {
+                        model.error = "Username is not available";
+                    }
+                },
+                function() {
+                    var newUser = {
+                        username: username,
+                        password: password
+                    };
 
-            if(found !== null) {
-                model.error = "Username is not available";
-            } else {
-                var user = {
-                    username: username,
-                    password: password
-                };
-                userService
-                    .register(user)
-                    .then(
-                        function(response) {
-                            var user = response.data;
+                    return userService
+                        .register(newUser)
+                        .then(function(user) {
                             $rootScope.currentUser = user;
-                            $location.url("/user/"+user._id);
+                            $location.url("/user/" + user._id);
                         })
-            }
+                })
         }
     }
 })();

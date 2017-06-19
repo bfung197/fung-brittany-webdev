@@ -8,18 +8,18 @@
     </div>
 
     <label for="username">Username</label>
-    <input ng-model="username"
+    <input ng-model="model.user.username"
            id="username"
            type="text"
            class="form-control"/>
 
     <label for="password">Password</label>
-    <input ng-model="password"
+    <input ng-model="model.user.password"
            id="password"
            type="password"
            class="form-control"/>
 
-    <a ng-click="model.login(username, password)"
+    <a ng-click="model.login(model.user.username, model.user.password)"
        class="btn btn-block btn-info">
         Login
     </a>

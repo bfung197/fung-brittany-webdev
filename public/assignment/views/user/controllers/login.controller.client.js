@@ -3,31 +3,34 @@
         .module('WAM')
         .controller('loginController', loginController);
 
-    function loginController($location, userService) {
+    function loginController($location, userService, $rootScope) {
 
         var model = this;
         model.login = login;
 
         function login(username, password) {
+            if(username === null || typeof username==='undefined'){
+                model.message="Username is required.";
+                return;
+            }
+            if(password === null || typeof password==='undefined') {
+                model.message = "Password is required.";
+                return;
+            }
 
             userService
-                .findUserByCredentials(username, password)
-                .then(login, handleError);
+                .login(username, password)
+                .then(function(user) {
+                    if(user !== null) {
+                        $rootScope.currentUser = user;
+                        $location.url('/user/' + user._id);
+                    }
+                },
+                function(error) {
+                model.message = "Unable to log in."
+            });
 
-            function handleError(error) {
-                model.message = "Unable to log in.";
-            }
-
-            function login(user) {
-                userService
-                    .login(user)
-                    .then(
-                        function (response) {
-                            var user = response.data;
-                            $location.url("/profile");
-                        })
-            }
         }
     }
 
-    }());
+}());

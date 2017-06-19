@@ -19,89 +19,56 @@
                 templateUrl: 'views/user/templates/profile.view.client.html',
                 controller: 'profileController',
                 controllerAs: 'model',
-                resolve: {
-                    currentUser: checkLoggedIn
-                }
             })
             .when('/user/:uid/website', {
                 templateUrl: 'views/website/templates/website-list.view.client.html',
                 controller: 'websiteListController',
                 controllerAs: 'model',
-                resolve: {
-                    currentUser: checkLoggedIn
-                }
             })
             .when('/user/:uid/website/new', {
                 templateUrl: 'views/website/templates/website-new.view.client.html',
                 controller: 'newWebsiteController',
                 controllerAs: 'model',
-                resolve: {
-                    currentUser: checkLoggedIn
-                }
             })
             .when('/user/:uid/website/:wid', {
                 templateUrl: 'views/website/templates/website-edit.view.client.html',
                 controller: 'editWebsiteController',
                 controllerAs: 'model',
-                resolve: {
-                    currentUser: checkLoggedIn
-                }
             })
             .when('/user/:uid/website/:wid/page', {
                 templateUrl: 'views/page/templates/page-list.view.client.html',
                 controller: 'pageListController',
                 controllerAs: 'model',
-                resolve: {
-                    currentUser: checkLoggedIn
-                }
             })
             .when('/user/:uid/website/:wid/page/new', {
                 templateUrl: 'views/page/templates/page-new.view.client.html',
                 controller: 'newPageController',
                 controllerAs: 'model',
-                resolve: {
-                    currentUser: checkLoggedIn
-                }
             })
             .when('/user/:uid/website/:wid/page/:pid', {
                 templateUrl: 'views/page/templates/page-edit.view.client.html',
                 controller: 'editPageController',
                 controllerAs: 'model',
-                resolve: {
-                    currentUser: checkLoggedIn
-                }
             })
             .when('/user/:uid/website/:wid/page/:pid/widget', {
                 templateUrl: 'views/widget/templates/widget-list.view.client.html',
                 controller: 'widgetListController',
                 controllerAs: 'model',
-                resolve: {
-                    currentUser: checkLoggedIn
-                }
             })
             .when('/user/:uid/website/:wid/page/:pid/widget/new', {
                 templateUrl: 'views/widget/templates/widget-choose.view.client.html',
                 controller: 'newWidgetController',
                 controllerAs: 'model',
-                resolve: {
-                    currentUser: checkLoggedIn
-                }
             })
             .when('/user/:uid/website/:wid/page/:pid/widget/:wgid', {
                 templateUrl: 'views/widget/templates/widget-edit.view.client.html',
                 controller: 'editWidgetController',
                 controllerAs: 'model',
-                resolve: {
-                    currentUser: checkLoggedIn
-                }
             })
             .when('/user/:uid/website/:wid/page/:pid/widget/:wgid/search', {
               templateUrl: 'views/widget/templates/widget-flickr-search.view.client.html',
                 controller: 'flickrImageSearchController',
                 controllerAs: 'model',
-                resolve: {
-                    currentUser: checkLoggedIn
-                }
             })
             .when('/admin', {
                 templateUrl: 'views/admin/templates/admin.view.client.html',
