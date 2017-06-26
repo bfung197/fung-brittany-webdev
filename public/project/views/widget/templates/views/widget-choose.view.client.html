@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-text pull-left fixed-left"
+               href=#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget>
+                <div class="glyphicon glyphicon-chevron-left black"></div>
+            </a>
+            <a class="navbar-brand darkgrey page-title">
+                <b>Choose Widget</b>
+            </a>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container-fluid list-padding">
+    <a class="list-group">
+        <div class="widget-choose">
+            <a ng-click="model.createWidget('YOUTUBE')">
+                Youtube</a></div>
+        <div class="widget-choose">
+            <a ng-click="model.createWidget('HEADING')">
+                Heading </a></div>
+        <div class="widget-choose">
+            <a ng-click="model.createWidget('IMAGE')">
+                Image</a></div>
+        <div class="widget-choose">
+            <a ng-click="model.createWidget('TEXT')">
+                Text</a></div>
+        <div class="widget-choose">
+            <a ng-click="model.createWidget('HTML')">
+                HTML</a></div>
+
+    </a>
+</div>
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text">
+            <a href=#!/user/{{model.userId}}>
+                <span class="glyphicon glyphicon-user glyphicon-primary"></span>
+            </a>
+        </div>
+    </div>
+</nav>
+</body>

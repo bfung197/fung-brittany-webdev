@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4 hidden-xs srollable-left">
+            <ul class="list-group">
+                <li class="list-group-item active">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-8 col-sm-11 col-xs-6">
+                            Website Name
+                        </div>
+                        <div class="col-lg-3 visible-lg">
+                            Created
+                        </div>
+                        <div class="col-md-2 hidden-sm  hidden-xs">
+                            Updated
+                        </div>
+                        <div class="col-sm-2 col-xs-6">
+
+                        </div>
+                    </div>
+                </li>
+
+
+                <li ng-repeat="website in model.websites" class="list-group-item">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-8 col-sm-8 col-xs-8">
+                            <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">
+                                {{website.name}}
+                            </a>
+                        </div>
+                        <div class="col-lg-3 visible-lg">
+                            {{website.created | date}}
+                        </div>
+                        <div class="col-md-3 hidden-sm  hidden-xs">
+                            {{website.updated | date}}
+                        </div>
+                        <div class="col-sm-1 col-xs-1">
+                            <a href="#!/user/{{model.userId}}/website/{{website._id}}">
+                                <span class="glyphicon glyphicon-cog pull-right"></span>
+                            </a>
+                        </div>
+                    </div>
+            </ul>
+        </div>
+        <div class="col-xs-12 col-sm-8">
+
+            <div ng-show="model.message" class="alert alert-danger">
+                {{model.message}}
+            </div>
+
+            <label for="name">Name</label>
+            <input id="name"
+                   ng-model="website.name"
+                   class="form-control"/>
+
+            <label for="description">Description</label>
+            <textarea id="description"
+                      ng-model="website.description"
+                      rows="5"
+                      class="form-control"></textarea>
+
+            <a ng-click="model.createWebsite(website, website.name)"
+               class="btn btn-block btn-success">
+                Create
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<nav class="navbar bg-primary navbar-fixed-bottom">
+    <div class="container">
+        <div class="navbar-text">
+            <a href=#!/user/{{model.userId}}>
+                <span class="glyphicon glyphicon-user white"></span>
+            </a>
+        </div>
+    </div>
+</nav>
+</body>
+
+</html>

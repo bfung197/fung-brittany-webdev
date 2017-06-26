@@ -6,8 +6,6 @@
     function registerController($location, userService, $rootScope) {
 
         var model = this;
-
-        // event handlers
         model.register = register;
 
         // implementation
@@ -31,27 +29,37 @@
                 model.error = "Passwords must match";
                 return;
             }
+            console.log(username);
 
             userService
-                .findUserByCredentials(username, password)
-                .then(function (found) {
-                        if (found !== null) {
-                            model.error = "Username is not available";
-                        }
-                    },
-                    function () {
-                        var newUser = {
-                            username: username,
-                            password: password
-                        };
+                .findUserByUsername(username)
+                .then(register, handleError);
 
-                        return userService
-                            .register(newUser)
-                            .then(function (user) {
-                                $rootScope.currentUser = user;
-                                $location.url("/user/" + user._id);
-                            })
-                    })
+            function handleError() {
+                model.message = "Unable to register."
+            }
+
+            function register(found) {
+                console.log(found);
+                if (found !== null) {
+                    model.message = "Username not available."
+                }
+                else {
+                    var newUser = {
+                        username: username,
+                        password: password
+                    };
+
+                    console.log(newUser);
+
+                    userService
+                        .register(newUser)
+                        .then(function (user) {
+                            $rootScope.currentUser = user;
+                            $location.url("/user/" + user._id);
+                        });
+                }
+            }
         }
     }
 })();

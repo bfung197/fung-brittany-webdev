@@ -1,30 +1,10 @@
-(function () {
-    angular
-        .module("pocApp", [])
-        .controller("pocController", pocController);
+var app = require('../../express');
+var mongoose = require('mongoose');
+mongoose.Promise = require('q').Promise;
+mongoose.connect('mongodb://localhost/webdev_summer1_2017');
 
-    function pocController($http) {
-        var model = this;
-        model.searchExercise = searchExercise;
-        model.searchDetails = searchDetails;
-
-        function searchExercise(muscle) {
-            var url = "https://wger.de/api/v2/exercise/?muscles=" + muscle + "&language=2";
-            $http.get(url)
-                .then(function (response) {
-                    model.exercises = response.data.results;
-                })
-        }
-
-        function searchDetails(exerciseId) {
-            var url = "https://wger.de/api/v2/exercise/" + exerciseId;
-            $http.get(url)
-                .then(function (response) {
-                    model.exercise = response.data;
-                    model.description = response.data.description;
-                    document.getElementById('description').innerHTML = model.description;
-                })
-
-        }
-    }
-})();
+require('../project/services/user.service.server');
+require('../project/services/website.service.server');
+require('../project/services/page.service.server');
+require('../project/services/widget.service.server');
+require('../project/services/post.service.server');

@@ -10,6 +10,7 @@ app.get('/api/user', findUserByCredentials);
 app.get('/api/user/:uid', findUserById);
 app.put('/api/user/:uid', updateUser);
 app.delete('/api/user/:uid', deleteUser);
+app.get('/api/assignment/user', findUserByUsername);
 
 function findAllUsers(req, res) {
     var username = req.query['username'];
@@ -66,8 +67,6 @@ function updateUser(req, res) {
 
 function createUser(req, res) {
     var user = req.body;
-    user.password = bcrypt.hashSync(user.password);
-    console.log(user.password);
     userModel
         .createUser(user)
         .then(function (user) {
@@ -75,20 +74,22 @@ function createUser(req, res) {
         });
 }
 
-function findUserByCredentials(req, res) {
+function findUserByUsername(req, res) {
     var username = req.query['username'];
-    var password = req.query['password'];
+    userModel
+        .findUserByUsername(username)
+        .then(function (user) {
+                res.json(user);
+        });
+}
 
+function findUserByCredentials(req, res) {
+    var password = req.query['password'];
+    var username = req.query['username'];
     userModel
         .findUserByCredentials(username, password)
         .then(function (user) {
-            if (user !== null) {
-                res.json(user);
-            } else {
-                res.sendStatus(404);
-            }
-        }, function (err) {
-            res.sendStatus(404);
+            res.json(user);
         });
 }
 
@@ -133,19 +134,18 @@ function deserializeUser(user, done) {
 
 function localStrategy(username, password, done) {
     userModel
-        .findUserByCredentials(username, password)
+        .findUserByUsername(username)
         .then(function (user) {
                 if(user && bcrypt.compareSync(password, user.password)) {
                     return done(null, user);
                 } else {
-                    return done(null, false);
+                    done(null, false);
                 }
             },
             function (err) {
-                if (err) {
-                    return done(err);
-                }
+                done(err, false);
             }
+
         );
 }
 
@@ -161,6 +161,7 @@ function logout(req, res) {
 
 function register(req, res) {
     var user = req.body;
+    user.password = bcrypt.hashSync(user.password);
     userModel
         .createUser(user)
         .then(function (user) {
@@ -190,7 +191,7 @@ app.get('/auth/facebook/callback', passport.authenticate('facebook', {
     failureRedirect: '/assignment/index.html#!/'
 }));
 
-passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
+//passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
 
 
 function facebookStrategy(token, refreshToken, profile, done) {

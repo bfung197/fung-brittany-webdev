@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<div class="container-fluid">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand page-title pull-left black">
+                    <b>Home Page</b>
+                </a>
+                <a ng-click="model.logout()"
+                   class="btn btn-sm btn-danger pull-right fixed-right"
+                   style="margin-top:10px">
+                    <b>Logout</b>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div class="hidden-xs hidden-sm col-md-3 col-lg-3 col-xl-9"
+             id="left-scrollable">
+            <h3>Information</h3>
+            <div ng-show="model.message" class="alert alert-success">
+                {{model.message}}
+            </div>
+
+            <label for="username">Username</label>
+            <input ng-model="model.user.username"
+                   id="username"
+                   class="form-control"/>
+
+            <label>First Name</label>
+            <input ng-model="model.user.firstName"
+                   class="form-control"/>
+
+            <label>Last Name</label>
+            <input ng-model="model.user.lastName"
+                   class="form-control"/>
+
+            <label>Email</label>
+            <input ng-model="model.user.email"
+                   type="email"
+                   class="form-control"/>
+
+            <label>Phone Number</label>
+            <input ng-model="model.user.phone"
+                   class="form-control"/>
+
+            <a href="#!/user/{{model.user._id}}/website"
+               class="btn btn-block btn-primary">Website</a>
+
+            <a ng-click="model.updateUser(model.user)"
+               class="btn btn-block btn-success">Update</a>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9"
+             id="right-scrollable">
+            <h3>Your Posts</h3>
+            <div ng-show="model.message" class="alert alert-danger">
+                {{model.message}}
+            </div>
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="post-button col-sm-4">
+                        <a ng-click="model.createPost('YOUTUBE')"
+                           class="btn btn-block btn-success">
+                            New YouTube Post
+                        </a>
+                    </div>
+                    <div class="post-button col-sm-4">
+                        <a ng-click="model.createPost('IMAGE')"
+                           class="btn btn-block btn-success">
+                            New Image Post
+                        </a>
+                    </div>
+                    <div class="post-button col-sm-4">
+                        <a ng-click="model.createPost('HEADING')"
+                           class="btn btn-block btn-success">
+                            New Heading Post
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <div ng-repeat="post in model.posts"
+                     style="padding-top: 50px">
+                    <div class="wd-post">
+                        <div class="wd-post-toolbar">
+                            <a href="#!/user/{{model.userId}}/post/{{post._id}}">
+                                <span class="glyphicon glyphicon-cog pull-right"></span>
+                            </a>
+                            <span class="glyphicon glyphicon-align-justify pull-right"></span>
+                        </div>
+
+                        <div ng-include="model.getPostUrlForType(post.type)"></div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
