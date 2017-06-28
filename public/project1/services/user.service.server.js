@@ -26,23 +26,23 @@ app.get   ('/auth/google/callback',
         failureRedirect: '#!/login'
     }));
 
-// var googleConfig = {
-//     clientID        : process.env.GOOGLE_CLIENT_ID,
-//     clientSecret    : process.env.GOOGLE_CLIENT_SECRET,
-//     callbackURL     : process.env.GOOGLE_CALLBACK_URL
-// };
-
 var googleConfig = {
-    clientID     : '135713276321-gamppknaevrgk6fm5a2md77hcmq6ktq8.apps.googleusercontent.com',
-    clientSecret : 'B5TQqfuNOm0vlTIGUJHzq4B1',
-    callbackURL  : 'http://localhost:3000/auth/google/callback'
+    clientID        : process.env.GOOGLE_CLIENT_ID,
+    clientSecret    : process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL     : process.env.GOOGLE_CALLBACK_URL
 };
 
-// var facebookConfig = {
-//     clientID        : process.env.FACEBOOK_CLIENT_ID,
-//     clientSecret    : process.env.FACEBOOK_CLIENT_SECRET,
-//     callbackURL     : process.env.FACEBOOK_CALLBACK_URL
+// var googleConfig = {
+//     clientID     : '135713276321-gamppknaevrgk6fm5a2md77hcmq6ktq8.apps.googleusercontent.com',
+//     clientSecret : 'B5TQqfuNOm0vlTIGUJHzq4B1',
+//     callbackURL  : 'http://localhost:3000/auth/google/callback'
 // };
+
+var facebookConfig = {
+    clientID        : process.env.FACEBOOK_CLIENT_ID,
+    clientSecret    : process.env.FACEBOOK_CLIENT_SECRET,
+    callbackURL     : process.env.FACEBOOK_CALLBACK_URL
+};
 
 
 
@@ -335,12 +335,12 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 //     profileFields: ['id', 'emails', 'name']
 // };
 
-var facebookConfig = {
-    clientID: '476004756079445',
-    clientSecret: '4297a5e6055fdd7dddae88dd40bc2a06',
-    callbackURL: "http://localhost:3000/auth/facebook/callback",
-    profileFields: ['id', 'emails', 'name']
-};
+// var facebookConfig = {
+//     clientID: '476004756079445',
+//     clientSecret: '4297a5e6055fdd7dddae88dd40bc2a06',
+//     callbackURL: "http://localhost:3000/auth/facebook/callback",
+//     profileFields: ['id', 'emails', 'name']
+// };
 
 app.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));
 app.get('/auth/facebook/callback', passport.authenticate('facebook', {
