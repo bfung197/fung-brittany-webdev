@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="pocApp">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
-    <script src="../../vendor/angular/angular.min.js"></script>
-    <link href="../../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="../app.js"></script>
-    <title>Project</title>
-</head>
-<body>
 <div class="container-fluid"
-     ng-controller="pocController as model">
+     ng-controller="exerciseController as model">
 
-    <h1>WGER POC</h1>
+    <h1>Exercise Search</h1>
     <div class="row">
         <div class="col-xs-6">
             <h2>Search</h2>
@@ -35,8 +25,6 @@
                     <option value="13">Brachialis</option>
                     <option value="14">Obliquus externus abdominis</option>
                     <option value="15">Soleus</option>
-
-
                 </select>
             </form>
             <button class="btn btn-primary btn-block"
@@ -56,12 +44,32 @@
 
         <div class="col-xs-6">
             <h2>Details</h2>
+
+            <div ng-show="model.message" class="alert alert-success">
+                {{model.message}}
+            </div>
+            <div ng-show="model.error" class="alert alert-danger">
+                {{model.error}}
+            </div>
+            <a ng-show="model.error" href="#!/login"
+               class="btn btn-info btn-block">
+                Click here to log in
+            </a>
+
             <h4>{{model.exercise.name}}</h4>
             <div id="description"></div>
+
+            <a ng-show="model.exercise" ng-click="model.addExercise(model.exercise)"
+               class="btn btn-success btn-block">
+                Add Exercise to Program
+            </a>
+
+            <li ng-repeat="user in model.users" class="list-group-item">
+                <a href="#!/user/{{model.userId}}">
+                    {{user.name}}
+                </a>
+            </li>
         </div>
     </div>
 </div>
 
-
-</body>
-</html>

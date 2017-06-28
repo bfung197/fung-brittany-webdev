@@ -30,7 +30,7 @@ function uploadImage(req, res) {
             postModel
                 .updatePost(postId, post)
                 .then(function () {
-                    res.redirect("/project/index.html#!/user/" + userId + "/post/" + postId);
+                    res.redirect("/project/exercise-search.view.html#!/user/" + userId + "/post/" + postId);
                 }, function (err) {
                     res.send(err);
                 });

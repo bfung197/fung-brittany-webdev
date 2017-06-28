@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 
-<div class="container-fluid">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand page-title pull-left black">
-                    <b>Home Page</b>
-                </a>
-                <a ng-click="model.logout()"
-                   class="btn btn-sm btn-danger pull-right fixed-right"
-                   style="margin-top:10px">
-                    <b>Logout</b>
-                </a>
-            </div>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#page-list">
+                <span class="icon-bar white"></span>
+                <span class="icon-bar white"></span>
+                <span class="icon-bar white"></span>
+            </button>
+            <a class="navbar-brand" href="#">Home Page</a>
         </div>
-    </nav>
+        <div class="collapse navbar-collapse" id="page-list">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#!/user/{{model.userId}}/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                <li><a ng-click="model.logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            </ul>
+            <ul class="navbar navbar-nav">
+            </ul>
+        </div>
+    </div>
+</nav>
 
     <div class="row">
         <div class="hidden-xs hidden-sm col-md-3 col-lg-3 col-xl-9"
@@ -46,8 +51,16 @@
             <input ng-model="model.user.phone"
                    class="form-control"/>
 
-            <a href="#!/user/{{model.user._id}}/website"
-               class="btn btn-block btn-primary">Website</a>
+            <a href="#!/user/{{model.user._id}}/exercises"
+               class="btn btn-block" style="border-color:forestgreen"><b style="color:forestgreen">Exercises</b></a>
+
+            <a href="#!/user/{{model.user._id}}/exercises/search"
+               class="btn btn-block" style="border-color:dodgerblue"><b style="color:dodgerblue">Search for
+                Exercises</b></a>
+
+            <a href="#!/user/{{model.user._id}}/users/search"
+               class="btn btn-block" style="border-color:darksalmon"><b style="color:darksalmon">Search for
+                Users</b></a>
 
             <a ng-click="model.updateUser(model.user)"
                class="btn btn-block btn-success">Update</a>
@@ -97,10 +110,10 @@
                         <div ng-include="model.getPostUrlForType(post.type)"></div>
                     </div>
                 </div>
-                </div>
             </div>
-
         </div>
+
     </div>
+</div>
 
 

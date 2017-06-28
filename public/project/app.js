@@ -8,3 +8,4 @@ require('../project/services/website.service.server');
 require('../project/services/page.service.server');
 require('../project/services/widget.service.server');
 require('../project/services/post.service.server');
+require('../project/services/exercise.service.server');

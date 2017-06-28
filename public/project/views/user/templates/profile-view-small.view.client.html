@@ -1,0 +1,61 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#page-list">
+            <span class="icon-bar white"></span>
+            <span class="icon-bar white"></span>
+            <span class="icon-bar white"></span>
+        </button>
+        <a class="navbar-brand" href="#">Profile</a>
+    </div>
+    <div class="collapse navbar-collapse" id="page-list">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#!/user/{{model.userId}}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+            <li><a ng-click="model.logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+        <ul class="navbar navbar-nav">
+        </ul>
+    </div>
+</div>
+</nav>
+
+<div class="container">
+<h3>Information</h3>
+<div ng-show="model.message" class="alert alert-success">
+    {{model.message}}
+</div>
+
+<label for="username">Username</label>
+<input ng-model="model.user.username"
+       id="username"
+       class="form-control"/>
+
+<label>First Name</label>
+<input ng-model="model.user.firstName"
+       class="form-control"/>
+
+<label>Last Name</label>
+<input ng-model="model.user.lastName"
+       class="form-control"/>
+
+<label>Email</label>
+<input ng-model="model.user.email"
+       type="email"
+       class="form-control"/>
+
+<label>Phone Number</label>
+<input ng-model="model.user.phone"
+       class="form-control"/>
+
+<a href="#!/user/{{model.user._id}}/exercises"
+   class="btn btn-block" style="border-color:forestgreen"><b style="color:forestgreen">Exercises</b></a>
+
+<a href="#!/user/{{model.user._id}}/exercises/search"
+   class="btn btn-block" style="border-color:dodgerblue"><b style="color:dodgerblue">Search for Exercises</b></a>
+
+<a href="#!/user/{{model.user._id}}/users/search"
+   class="btn btn-block" style="border-color:darksalmon"><b style="color:darksalmon">Search for Users</b></a>
+
+<a ng-click="model.updateUser(model.user)"
+   class="btn btn-block btn-success">Update</a>
+</div>

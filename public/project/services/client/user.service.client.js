@@ -15,10 +15,19 @@
             login: login,
             logout: logout,
             register: register,
-            findAllUsers : findAllUsers
+            findAllUsers : findAllUsers,
+            findAllExercisesForUser: findAllExercisesForUser
         };
 
         return api;
+
+        function findAllExercisesForUser(userId) {
+            var url = "/api/user/" + userId + "/exercises";
+            $http.get(url)
+                .then(function(response) {
+                    return response.data;
+                })
+        }
 
         function findAllUsers() {
             var url = "/api/users";

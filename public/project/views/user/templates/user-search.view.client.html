@@ -1,0 +1,10 @@
+<div class="container-fluid">
+    <h2>Users</h2>
+    <ul class="list-group">
+        <a ng-repeat="user in model.users"
+            href="#!/user/{{user.id}}"
+            class="list-group-item">
+            {{user.username}}
+        </a>
+    </ul>
+</div>

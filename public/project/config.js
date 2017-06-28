@@ -5,7 +5,26 @@
 
     function configuration($routeProvider) {
         $routeProvider
+            .when('/user/:uid/users/search', {
+                templateUrl: 'views/user/templates/user-search.view.client.html',
+                controller: "userSearchController",
+                controllerAs: "model"
+            })
+            .when('/exercises', {
+                templateUrl: 'views/exercise/exercise-search.view.html'
+            })
+            .when('/user/:uid/exercises/search', {
+                templateUrl: 'views/exercise/exercise-search.view.html'
+            })
+            .when('/user/:uid/exercises', {
+                templateUrl: 'views/exercise/exercise-list.view.html',
+                controller: 'exerciseListController',
+                controllerAs: 'model'
+            })
             .when('/', {
+                templateUrl: 'home.html'
+            })
+            .when('/login', {
                 templateUrl: 'views/user/templates/login.view.client.html',
                 controller: 'loginController',
                 controllerAs: 'model'
@@ -20,6 +39,12 @@
                 controller: 'profileController',
                 controllerAs: 'model',
             })
+            .when('/user/:uid/profile', {
+                templateUrl: 'views/user/templates/profile-view-small.view.client.html',
+                controller: 'profileController',
+                controllerAs: 'model',
+            })
+
             .when('/user/:uid', {
                 templateUrl: 'views/user/templates/profile.view.client.html',
                 controller: 'profileController',

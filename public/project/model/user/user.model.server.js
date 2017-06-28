@@ -9,12 +9,13 @@ userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
-userModel.addWebsite = addWebsite;
-userModel.removeWebsite = removeWebsite;
 userModel.findUserByFacebookId = findUserByFacebookId;
 userModel.findAllUsers = findAllUsers;
+userModel.addExercise = addExercise;
+userModel.removeExercise = removeExercise;
 
 module.exports = userModel;
+
 
 
 function findAllUsers() {
@@ -46,13 +47,13 @@ function updateUser(userId, user) {
     delete user.username;
     return userModel
         .update({_id: userId}, {
-        $set : {
-            firstName: user.firstName,
-            lastName: user.lastName,
-            email: user.email,
-            phone: user.phone
-        }
-    });
+            $set: {
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                phone: user.phone
+            }
+        });
 }
 
 function deleteUser(userId) {
@@ -61,21 +62,21 @@ function deleteUser(userId) {
 }
 
 
-function addWebsite(userId, websiteId) {
+function addExercise(userId, exercise) {
     return userModel
         .findById(userId)
         .then(function (user) {
-            user.websites.push(websiteId);
+            user.exercises.push(exercise);
             return user.save();
         })
 }
 
-function removeWebsite(userId, websiteId) {
+function removeExercise(userId, exerciseId) {
     return userModel
         .findUserById(userId)
         .then(function (user) {
-            var index = user.websites.indexOf(websiteId);
-            user.websites.splice(index, 1);
+            var index = user.exercises.indexOf(exerciseId);
+            user.exercises.splice(index, 1);
             return user.save();
         });
 }

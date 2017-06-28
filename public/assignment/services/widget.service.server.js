@@ -35,7 +35,7 @@ function uploadImage(req, res) {
             widgetModel
                 .updateWidget(widgetId, widget)
                 .then(function () {
-                    var callbackUrl   = "/assignment/index.html#!/user/" + userId + "/website/" + websiteId + "/page/"
+                    var callbackUrl   = "/assignment/exercise-search.view.html#!/user/" + userId + "/website/" + websiteId + "/page/"
                         + pageId + "/widget/" + widgetId;
                     res.redirect(callbackUrl);
                 }, function (err) {

@@ -1,43 +1,61 @@
 <!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <title>Home</title>
+</head>
+
 <body>
-<nav class="navbar navbar-default navbar-fixed-top" style="background-color:#5882FA">
+
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar" style="background-color:white"></span>
-                <span class="icon-bar" style="background-color:white"></span>
-                <span class="icon-bar" style="background-color:white"></span>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#page-list">
+                <span class="icon-bar white"></span>
+                <span class="icon-bar white"></span>
+                <span class="icon-bar white"></span>
             </button>
-            <a class="navbar-brand" href="#" style="color:white">The Future of Healthcare</a>
+            <a class="navbar-brand" href="#">The Exercise Tracker</a>
         </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" id="page-list">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-                <li class="white"><a href="/">Login</a></li>
-                <li class="white"><a href="views/user/templates/register.view.client.html">Register</a></li>
-                <li class="white"><a href="views/website/templates/website-list.view.client.html">Websites</a></li>
-                <li class="white"><a href="views/page/templates/page-list.view.client.html">Pages</a></li>
-                <li class="white"><a href="views/widget/templates/views/widget-list.view.client.html">Widgets</a></li>
+                <li>
+                    <a href="#!/login">Log In</a>
+                </li>
+                <li>
+                    <a href="#!/register">Register</a>
+                </li>
             </ul>
             <ul class="navbar navbar-nav">
             </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+        </div>
+    </div>
 </nav>
 
-<img src="https://pbs.twimg.com/media/C-Ml7aNVwAApdDL.jpg">
+<div class="home container-fluid">
+    Search For Exercises
+    <a class="btn btn-primary btn-block"
+            href="#!/exercises">
+        Search
+    </a>
+</div>
 
+<img class="hidden-sm hidden-xs"
+     src="https://images.pexels.com/photos/401896/pexels-photo-401896.jpeg?w=940&h=650&auto=compress&cs=tinysrgb">
+<img class="hidden-lg hidden-xl hidden-xs"
+     src="https://static.pexels.com/photos/29578/pexels-photo.jpg">
+<img class="hidden-sm hidden-md hidden-lg hidden-xl"
+     src="http://res.freestockphotos.biz/pictures/15/15320-a-healthy-young-woman-stretching-before-exercise-outdoors-pv.jpg">
 
-<nav class="navbar navbar-primary navbar-fixed-bottom" style="background-color:#5882FA">
+<nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
-        <div class="navbar-text pull-right" style="color:white">
+        <div class="navbar-text pull-right">
             By Brittany Fung
         </div>
     </div>
 </nav>
+
 </body>
-</html>
