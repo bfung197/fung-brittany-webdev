@@ -27,10 +27,12 @@ function uploadImage(req, res) {
         .findPostById(postId)
         .then(function (post) {
             post.url = '/public/uploads/'+filename;
+
             postModel
                 .updatePost(postId, post)
                 .then(function () {
-                    res.redirect("/project/exercise-search.view.html#!/user/" + userId + "/post/" + postId);
+                    var callbackURL = "/project/exercise-search.view.client.html#!/user/" + userId + "/post/" + postId
+                    res.redirect(callbackURL);
                 }, function (err) {
                     res.send(err);
                 });
@@ -38,10 +40,9 @@ function uploadImage(req, res) {
 }
 
 function createPost(req, res) {
-    var userId = req.params['userId'];
     var post = req.body;
     postModel
-        .createPostForUser(userId, post)
+        .createPostForUser(req.params['userId'], post)
         .then(function (post) {
             res.json(post);
         });

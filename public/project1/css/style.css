@@ -1,0 +1,159 @@
+input.form-control {
+    margin-bottom: 5px;
+}
+
+body {
+    padding-top: 36px;
+}
+
+.navbar-inverse {
+    background-color: #eee;
+    border-color: #eee;
+}
+
+.list-group-item {
+    border-color: transparent;
+}
+
+#left {
+    padding-top: 25px
+}
+
+.white {
+    color: white;
+}
+
+.black {
+    color: black;
+}
+
+.darkgrey {
+    color: darkgrey;
+}
+
+.left-header {
+    position: fixed;
+    left: 35%;
+}
+
+.page-title {
+    position: fixed;
+    left: 60px;
+}
+
+#right {
+    padding-right: 15px;
+}
+
+.middle-glyphicon {
+    position: fixed;
+    left: 28%;
+}
+
+.fixed-left {
+    position: fixed;
+    left: 15px;
+}
+
+.fixed-right {
+    position: fixed;
+    right: 15px;
+}
+
+.list-padding {
+    padding-top: 50px;
+}
+
+.vresize {
+    min-height: 150px;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+#size {
+    padding-bottom: 10px;
+}
+
+#description {
+    margin-bottom: 10px;
+}
+
+.btn-block {
+    padding-top: 10px;
+}
+
+.youtube-widget {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+}
+
+.youtube-widget iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.wd-widget {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.wd-toolbar {
+    position: absolute;
+    background-color: white;
+    top: 0;
+    right: 0;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-bottom-left-radius: 10px;
+    opacity: 0.8;
+}
+
+.post-button {
+    margin-bottom: 10px;
+}
+
+#right-scrollable {
+    position: absolute;
+    right: 0;
+    overflow: scroll;
+}
+
+#left-scrollable {
+    position: absolute;
+    left: 0;
+    overflow: scroll;
+}
+
+.home {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    color: white;
+}
+
+
+@media all and (max-width: 1000px) {
+    .home {font-size:36px;}
+}
+
+@media all and (max-width: 800px) {
+    .home {font-size:30px; left:25%; transform: translate(-25%, -50%)}
+}
+
+@media all and (max-width: 450px) {
+    .home {font-size:24px; left:25%; transform: translate(-25%, -50%)}
+}
+
+.body-home {
+    background: blue;
+}
+

@@ -9,13 +9,12 @@ userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
+userModel.addWebsite = addWebsite;
+userModel.removeWebsite = removeWebsite;
 userModel.findUserByFacebookId = findUserByFacebookId;
 userModel.findAllUsers = findAllUsers;
-userModel.addExercise = addExercise;
-userModel.removeExercise = removeExercise;
 
 module.exports = userModel;
-
 
 
 function findAllUsers() {
@@ -47,7 +46,7 @@ function updateUser(userId, user) {
     delete user.username;
     return userModel
         .update({_id: userId}, {
-            $set: {
+            $set : {
                 firstName: user.firstName,
                 lastName: user.lastName,
                 email: user.email,
@@ -62,21 +61,21 @@ function deleteUser(userId) {
 }
 
 
-function addExercise(userId, exercise) {
+function addWebsite(userId, websiteId) {
     return userModel
         .findById(userId)
         .then(function (user) {
-            user.exercises.push(exercise);
+            user.websites.push(websiteId);
             return user.save();
         })
 }
 
-function removeExercise(userId, exerciseId) {
+function removeWebsite(userId, websiteId) {
     return userModel
         .findUserById(userId)
         .then(function (user) {
-            var index = user.exercises.indexOf(exerciseId);
-            user.exercises.splice(index, 1);
+            var index = user.websites.indexOf(websiteId);
+            user.websites.splice(index, 1);
             return user.save();
         });
 }

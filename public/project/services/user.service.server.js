@@ -11,17 +11,6 @@ app.get('/api/user/:uid', findUserById);
 app.put('/api/user/:uid', updateUser);
 app.delete('/api/user/:uid', deleteUser);
 app.get('/api/assignment/user', findUserByUsername);
-app.get('/api/user/:uid/exercises', findAllExercisesForUser);
-
-function findAllExercisesForUser(req, res) {
-    var userId = req.params['uid'];
-    userModel
-        .findUserById(userId)
-        .then(function(response) {
-            console.log("Server service:" + response.exercises);
-            res.json(response.exercises);
-        })
-}
 
 function findAllUsers(req, res) {
     var username = req.query['username'];
@@ -90,7 +79,7 @@ function findUserByUsername(req, res) {
     userModel
         .findUserByUsername(username)
         .then(function (user) {
-                res.json(user);
+            res.json(user);
         });
 }
 
@@ -198,8 +187,8 @@ var facebookConfig = {
 
 app.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));
 app.get('/auth/facebook/callback', passport.authenticate('facebook', {
-    successRedirect: '/assignment/exercise-search.view.html#!/user',
-    failureRedirect: '/assignment/exercise-search.view.html#!/'
+    successRedirect: '/assignment/exercise-search.view.client.html#!/user',
+    failureRedirect: '/assignment/exercise-search.view.client.html#!/'
 }));
 
 //passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));

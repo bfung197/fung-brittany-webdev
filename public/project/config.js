@@ -11,10 +11,10 @@
                 controllerAs: "model"
             })
             .when('/exercises', {
-                templateUrl: 'views/exercise/exercise-search.view.html'
+                templateUrl: 'views/exercise/exercise-search.view.client.html'
             })
             .when('/user/:uid/exercises/search', {
-                templateUrl: 'views/exercise/exercise-search.view.html'
+                templateUrl: 'views/exercise/exercise-search.view.client.html'
             })
             .when('/user/:uid/exercises', {
                 templateUrl: 'views/exercise/exercise-list.view.html',
@@ -96,7 +96,7 @@
                 controllerAs: 'model',
             })
             .when('/user/:uid/post/:poid/flickr/search', {
-              templateUrl: 'views/post/templates/views/post-flickr-search.view.client.html',
+                templateUrl: 'views/post/templates/views/post-flickr-search.view.client.html',
                 controller: 'flickrImageSearchController',
                 controllerAs: 'model',
             })

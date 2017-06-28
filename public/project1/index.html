@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="WAM">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- angular -->
+    <script src="../vendor/angular/angular.min.js"></script>
+    <script src="../vendor/angular/angular-route.min.js"></script>
+    <script src="../vendor/js/textAngular-rangy.min.js"></script>
+    <script src="../vendor/js/textAngular.min.js"></script>
+    <script src="../vendor/js/textAngular-sanitize.min.js"></script>
+    <link href="../vendor/css/textAngular.css" rel="stylesheet"/>
+
+    <!-- jquery -->
+    <script src="../vendor/jquery/dist/jquery.min.js"></script>
+    <script src="../vendor/jquery-ui/jquery-ui.min.js"></script>
+    <script src="directives/wbdv-sortable.js"></script>
+
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+
+    <!-- exercise -->
+    <script src="views/exercise/exercise-list.controller.js"></script>
+    <script src="views/exercise/exercise-search.controller.js"></script>
+    <script src="services/client/exercise.service.client.js"></script>
+
+    <!-- user -->
+    <script src="views/user/controllers/login.controller.client.js"></script>
+    <script src="views/user/controllers/profile.controller.client.js"></script>
+    <script src="views/user/controllers/register.controller.client.js"></script>
+    <script src="views/user/controllers/register.controller.client.js"></script>
+    <script src="services/client/user.service.client.js"></script>
+
+    <!-- page -->
+    <script src="views/page/controllers/page-edit.controller.client.js"></script>
+    <script src="views/page/controllers/page-list.controller.client.js"></script>
+    <script src="views/page/controllers/page-new.controller.client.js"></script>
+    <script src="services/client/page.service.client.js"></script>
+
+    <!-- website -->
+    <script src="views/website/controllers/website-list.controller.client.js"></script>
+    <script src="views/website/controllers/website-new.controller.client.js"></script>
+    <script src="views/website/controllers/website-edit.controller.client.js"></script>
+    <script src="services/client/website.service.client.js"></script>
+
+    <!-- widget -->
+    <script src="views/widget/controllers/widget-list.controller.client.js"></script>
+    <script src="views/widget/controllers/widget-choose.controller.client.js"></script>
+    <script src="views/widget/controllers/widget-edit.controller.client.js"></script>
+    <script src="views/widget/controllers/widget-flickr-search.controller.client.js"></script>
+    <script src="services/client/flickr.service.client.js"></script>
+    <script src="services/client/widget.service.client.js"></script>
+
+    <!-- post -->
+    <script src="views/post/controllers/post-flickr-search.controller.client.js"></script>
+    <script src="views/post/controllers/post-edit.controller.client.js"></script>
+    <script src="services/client/flickr.service.client.js"></script>
+    <script src="services/client/post.service.client.js"></script>
+
+    <!-- facebook -->
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '476004756079445',
+                cookie     : true,
+                xfbml      : true,
+                version    : 'v2.8'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <!-- bootstrap -->
+    <link href="../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+
+    <!-- facebook -->
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '476004756079445',
+                cookie     : true,
+                xfbml      : true,
+                version    : 'v2.8'
+            });
+            FB.AppEvents.logPageView();
+        };
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+
+    <title>Web Development</title>
+</head>
+
+<body>
+
+<div ng-view></div>
+
+</body>
+</html>

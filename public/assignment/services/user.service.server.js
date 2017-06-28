@@ -191,7 +191,7 @@ app.get('/auth/facebook/callback', passport.authenticate('facebook', {
     failureRedirect: '/assignment/exercise-search.view.html#!/'
 }));
 
-//passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
+passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
 
 
 function facebookStrategy(token, refreshToken, profile, done) {

@@ -17,8 +17,6 @@ app.use(passport.session());
 
 require ("./test/app.js")(app);
 
-//require ("./public/assignment/exercise.controller.js");
-
 require ("./public/project/app.js");
 
 

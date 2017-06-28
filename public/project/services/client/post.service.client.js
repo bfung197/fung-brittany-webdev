@@ -55,7 +55,7 @@
         }
 
         function uploadImage() {
-            var url = "/api/upload";
+            var url = "/api/post/upload";
             return $http.post(url)
                 .then(function (response) {
                     return response.data;

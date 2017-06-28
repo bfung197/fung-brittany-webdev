@@ -13,7 +13,6 @@ postModel.deletePost = deletePost;
 
 module.exports = postModel;
 
-
 function createPostForUser(userId, post) {
     post._user = userId;
     return postModel
@@ -75,4 +74,3 @@ function deletePost(postId) {
                 );
         });
 }
-

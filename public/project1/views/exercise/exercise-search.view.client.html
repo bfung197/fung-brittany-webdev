@@ -1,0 +1,75 @@
+<div class="container-fluid"
+     ng-controller="exerciseController as model">
+
+    <h1>Exercise Search</h1>
+    <div class="row">
+        <div class="col-xs-6">
+            <h2>Search</h2>
+            <form>
+                <select class="form-control"
+                        id="muscle"
+                        style="margin-bottom:10px"
+                        ng-model="model.muscle">
+                    <option value="1">Biceps brachii</option>
+                    <option value="2">Anterior deltoid</option>
+                    <option value="3">Serratus anterior</option>
+                    <option value="4">Pectoralis major</option>
+                    <option value="5">Triceps brachii</option>
+                    <option value="6">Rectus abdominis</option>
+                    <option value="7">Gastrocnemius</option>
+                    <option value="8">Gluteus maximus</option>
+                    <option value="9">Trapezius</option>
+                    <option value="10">Quadriceps femoris</option>
+                    <option value="11">Biceps femoris</option>
+                    <option value="12">Latissimus dorsi</option>
+                    <option value="13">Brachialis</option>
+                    <option value="14">Obliquus externus abdominis</option>
+                    <option value="15">Soleus</option>
+                </select>
+            </form>
+            <button class="btn btn-primary btn-block"
+                    ng-click="model.searchExercise(model.muscle)">
+                Search
+            </button>
+
+            <ul class="list-group">
+                <li ng-repeat="exercise in model.exercises"
+                    ng-click="model.searchDetails(exercise.id)"
+                    class="list-group-item">
+                    {{exercise.name}}
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="col-xs-6">
+            <h2>Details</h2>
+
+            <div ng-show="model.message" class="alert alert-success">
+                {{model.message}}
+            </div>
+            <div ng-show="model.error" class="alert alert-danger">
+                {{model.error}}
+            </div>
+            <a ng-show="model.error" href="#!/login"
+               class="btn btn-info btn-block">
+                Click here to log in
+            </a>
+
+            <h4>{{model.exercise.name}}</h4>
+            <div id="description"></div>
+
+            <a ng-show="model.exercise" ng-click="model.addExercise(model.exercise)"
+               class="btn btn-success btn-block">
+                Add Exercise to Program
+            </a>
+
+            <li ng-repeat="user in model.users" class="list-group-item">
+                <a href="#!/user/{{model.userId}}">
+                    {{user.name}}
+                </a>
+            </li>
+        </div>
+    </div>
+</div>
+
