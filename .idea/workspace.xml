@@ -2,48 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe6670db-99b3-402f-9a68-1167e1302005" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project1/views/exercise/controllers/exercise-edit.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project1/views/exercise/controllers/exercise-new.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project1/views/exercise/templates/exercise-edit.view.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project1/views/exercise/templates/exercise-list.view.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project1/views/exercise/templates/exercise-new.view.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project1/views/post/controllers/post-like.controller.client.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project1/views/post/templates/views/post-likes.view.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project1/views/user/templates/profile-small.view.client.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/project1/views/exercise/exercise-list.view.html" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project1/views/exercise/exercise-list.controller.js" afterPath="$PROJECT_DIR$/public/project1/views/exercise/controllers/exercise-list.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project1/views/exercise/exercise-search.controller.js" afterPath="$PROJECT_DIR$/public/project1/views/exercise/controllers/exercise-search.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project1/views/exercise/exercise-search.view.client.html" afterPath="$PROJECT_DIR$/public/project1/views/exercise/templates/exercise-search.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/config.js" afterPath="$PROJECT_DIR$/public/project1/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/index.html" afterPath="$PROJECT_DIR$/public/project1/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/model/exercise/exercise.model.server.js" afterPath="$PROJECT_DIR$/public/project1/model/exercise/exercise.model.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/model/exercise/exercise.schema.server.js" afterPath="$PROJECT_DIR$/public/project1/model/exercise/exercise.schema.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/model/post/post.model.server.js" afterPath="$PROJECT_DIR$/public/project1/model/post/post.model.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/model/post/post.schema.server.js" afterPath="$PROJECT_DIR$/public/project1/model/post/post.schema.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/model/user/user.model.server.js" afterPath="$PROJECT_DIR$/public/project1/model/user/user.model.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/model/user/user.schema.server.js" afterPath="$PROJECT_DIR$/public/project1/model/user/user.schema.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/services/client/exercise.service.client.js" afterPath="$PROJECT_DIR$/public/project1/services/client/exercise.service.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/services/client/post.service.client.js" afterPath="$PROJECT_DIR$/public/project1/services/client/post.service.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/services/client/user.service.client.js" afterPath="$PROJECT_DIR$/public/project1/services/client/user.service.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/services/exercise.service.server.js" afterPath="$PROJECT_DIR$/public/project1/services/exercise.service.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/services/post.service.server.js" afterPath="$PROJECT_DIR$/public/project1/services/post.service.server.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/services/user.service.server.js" afterPath="$PROJECT_DIR$/public/project1/services/user.service.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/views/admin/controllers/admin.controller.client.js" afterPath="$PROJECT_DIR$/public/project1/views/admin/controllers/admin.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/views/admin/templates/admin.view.client.html" afterPath="$PROJECT_DIR$/public/project1/views/admin/templates/admin.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/views/home/home.controller.js" afterPath="$PROJECT_DIR$/public/project1/views/home/home.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/views/home/home.html" afterPath="$PROJECT_DIR$/public/project1/views/home/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/views/post/controllers/post-edit.controller.client.js" afterPath="$PROJECT_DIR$/public/project1/views/post/controllers/post-edit.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/views/post/controllers/post-flickr-search.controller.client.js" afterPath="$PROJECT_DIR$/public/project1/views/post/controllers/post-flickr-search.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/views/post/templates/editors/post-image-edit.view.client.html" afterPath="$PROJECT_DIR$/public/project1/views/post/templates/editors/post-image-edit.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/views/user/controllers/login.controller.client.js" afterPath="$PROJECT_DIR$/public/project1/views/user/controllers/login.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/views/user/controllers/profile.controller.client.js" afterPath="$PROJECT_DIR$/public/project1/views/user/controllers/profile.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/views/user/controllers/register.controller.client.js" afterPath="$PROJECT_DIR$/public/project1/views/user/controllers/register.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/views/user/controllers/user-search.controller.client.js" afterPath="$PROJECT_DIR$/public/project1/views/user/controllers/user-search.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/views/user/templates/login.view.client.html" afterPath="$PROJECT_DIR$/public/project1/views/user/templates/login.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/views/user/templates/profile.view.client.html" afterPath="$PROJECT_DIR$/public/project1/views/user/templates/profile.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project1/views/user/templates/user-search.view.client.html" afterPath="$PROJECT_DIR$/public/project1/views/user/templates/user-search.view.client.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -64,16 +23,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
               <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="exercise.model.server.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project1/model/exercise/exercise.model.server.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="14" column="50" lean-forward="false" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -139,11 +88,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="exercise-search.view.client.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="exercise-search.view.client.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/project1/views/exercise/templates/exercise-search.view.client.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+            <state relative-caret-position="308">
+              <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.service.server.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project1/services/user.service.server.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-29">
+              <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="46" lean-forward="true" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -194,7 +163,6 @@
         <option value="$PROJECT_DIR$/public/project1/app.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/public/project1/views/user/controllers/login.controller.client.js" />
-        <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/public/project1/views/user/controllers/register.controller.client.js" />
         <option value="$PROJECT_DIR$/public/project1/views/post/controllers/post-flickr-search.controller.client.js" />
         <option value="$PROJECT_DIR$/public/project1/views/post/controllers/post-edit.controller.client.js" />
@@ -216,7 +184,6 @@
         <option value="$PROJECT_DIR$/public/project1/model/user/user.schema.server.js" />
         <option value="$PROJECT_DIR$/public/project1/views/user/templates/profile.view.client.html" />
         <option value="$PROJECT_DIR$/public/project1/views/user/templates/profile-small.view.client.html" />
-        <option value="$PROJECT_DIR$/public/project1/services/user.service.server.js" />
         <option value="$PROJECT_DIR$/public/project1/views/user/controllers/user-search.controller.client.js" />
         <option value="$PROJECT_DIR$/public/project1/services/client/user.service.client.js" />
         <option value="$PROJECT_DIR$/public/project1/model/exercise/exercise.schema.server.js" />
@@ -235,6 +202,8 @@
         <option value="$PROJECT_DIR$/public/project1/views/exercise/templates/exercise-new.view.html" />
         <option value="$PROJECT_DIR$/public/project1/views/post/templates/editors/post-image-edit.view.client.html" />
         <option value="$PROJECT_DIR$/public/project1/views/exercise/templates/exercise-search.view.client.html" />
+        <option value="$PROJECT_DIR$/public/project1/services/user.service.server.js" />
+        <option value="$PROJECT_DIR$/server.js" />
       </list>
     </option>
   </component>
@@ -334,137 +303,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webdev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webdev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exercise" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webdev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webdev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exercise" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webdev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webdev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webdev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webdev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="website" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webdev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webdev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exercise" />
+              <option name="myItemId" value="services" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -636,12 +475,12 @@
       <workItem from="1497893731515" duration="256000" />
       <workItem from="1498241036236" duration="6115000" />
       <workItem from="1498423594959" duration="18089000" />
-      <workItem from="1498585072063" duration="79575000" />
+      <workItem from="1498585072063" duration="79659000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="328201000" />
+    <option name="totallyTimeSpent" value="328285000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1226" height="777" extended-state="6" />
@@ -893,14 +732,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project1/services/user.service.server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="163" column="1" lean-forward="true" selection-start-line="163" selection-start-column="1" selection-end-line="163" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/project1/views/user/controllers/user-search.controller.client.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -977,14 +808,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2">
           <caret line="126" column="10" lean-forward="true" selection-start-line="126" selection-start-column="10" selection-end-line="126" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1143,8 +966,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/project1/views/exercise/templates/exercise-search.view.client.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+        <state relative-caret-position="308">
+          <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project1/services/user.service.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-29">
+          <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="46" lean-forward="true" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
           <folding />
         </state>
       </provider>

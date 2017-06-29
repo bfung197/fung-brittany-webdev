@@ -39,29 +39,19 @@ app.get('/auth/facebook/callback', passport.authenticate('facebook', {
     failureRedirect: '#!/login'
 }));
 
-// var googleConfig = {
-//     clientID        : process.env.GOOGLE_CLIENT_ID,
-//     clientSecret    : process.env.GOOGLE_CLIENT_SECRET,
-//     callbackURL     : process.env.GOOGLE_CALLBACK_URL
-// };
-
 var googleConfig = {
-    clientID: '135713276321-gamppknaevrgk6fm5a2md77hcmq6ktq8.apps.googleusercontent.com',
-    clientSecret: 'B5TQqfuNOm0vlTIGUJHzq4B1',
-    callbackURL: 'http://localhost:3000/auth/google/callback'
+    clientID        : process.env.GOOGLE_CLIENT_ID,
+    clientSecret    : process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL     : process.env.GOOGLE_CALLBACK_URL
 };
 
-// var facebookConfig = {
-//     clientID        : process.env.FACEBOOK_CLIENT_ID,
-//     clientSecret    : process.env.FACEBOOK_CLIENT_SECRET,
-//     callbackURL     : process.env.FACEBOOK_CALLBACK_URL
-// };
 
 var facebookConfig = {
-    clientID: '476004756079445',
-    clientSecret: '2e5a4ac49ed3224538dcb0467ab27c24',
-    callbackURL: 'http://localhost:3000/auth/facebook/callback'
+    clientID        : process.env.FACEBOOK_CLIENT_ID,
+    clientSecret    : process.env.FACEBOOK_CLIENT_SECRET,
+    callbackURL     : process.env.FACEBOOK_CALLBACK_URL
 };
+
 
 passport.use(new LocalStrategy(localStrategy));
 passport.use(new GoogleStrategy(googleConfig, googleStrategy));
