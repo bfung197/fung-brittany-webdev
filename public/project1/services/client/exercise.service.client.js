@@ -8,27 +8,13 @@
         return {
             searchExercise: searchExercise,
             searchDetails: searchDetails,
-            addExercise: addExercise,
-            findAllExercises: findAllExercises,
             createExercise: createExercise,
-            findExerciseByName: findExerciseByName
+            findAllExercisesForUser: findAllExercisesForUser,
+            findExerciseById: findExerciseById,
+            updateExercise: updateExercise,
+            deleteExercise: deleteExercise
         };
 
-        function findExerciseByName(name) {
-            var url = "/api/exercise"
-            $http.get(url, name)
-                .then(function(response) {
-                    return response.data;
-                })
-        }
-
-        function findAllExercises() {
-            var url = "/api/exercises";
-            $http.get(url)
-                .then(function(response) {
-                    return response.data;
-                })
-        }
 
         function searchExercise(muscle) {
             var url = "https://wger.de/api/v2/exercise/?muscles=" + muscle + "&language=2";
@@ -47,14 +33,45 @@
                 })
         }
 
-        function addExercise(exercise, userId) {
-            var url = "/api/user/" + userId + "/exercise";
-            $http.post(url, exercise);
+
+        function createExercise(userId, exercise) {
+            return $http.post("/api/user/exercise")
+                .then(function (response) {
+                    return response.data;
+                })
         }
 
-        function createExercise(exercise, userId) {
-            var url = "/api/user/" + userId + "/exercise/create";
-            $http.post(url, exercise);
+        function updateExercise(exerciseId, exercise) {
+            var url = "/api/exercise/" + exerciseId;
+            return $http.put(url, exercise)
+                .then(function (response) {
+                    return response.data;
+                })
+        }
+
+        function deleteExercise(exerciseId) {
+            var url ="/api/exercise/" + exerciseId;
+            return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
+                })
+        }
+
+        function findExerciseById(exerciseId) {
+            var url = "/api/exercise/" + exerciseId;
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function findAllExercisesForUser(userId) {
+            var url = "/api/" + userId + "/exercises";
+            return $http.get(url, userId)
+                .then(function (response) {
+                    return response.data;
+                });
         }
     }
-})();
+
+    })();

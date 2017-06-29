@@ -7,8 +7,11 @@ var userSchema = mongoose.Schema({
     lastName: String,
     email: String,
     phone: String,
-    roles: [{type: String, default: 'USER', enum: ['USER', 'STUDENT', 'FACULTY', 'ADMIN']}],
+    roles: [{type: String, default: 'USER', enum: ['USER', 'ADMIN']}],
     posts: [{type: mongoose.Schema.ObjectId, ref:"PostModel"}],
+    exercises: [{type: mongoose.Schema.ObjectId, ref:"ExerciseModel"}],
+    following: [{type: mongoose.Schema.ObjectId, ref:"UserModel"}], //who follows them
+    follows: [{type: mongoose.Schema.ObjectId, ref:"UserModel"}], //who they follow
     dateCreated: {type: Date, default: Date.now},
     google: {
         id:    String,

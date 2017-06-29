@@ -3,9 +3,8 @@
         .module("WAM")
         .controller("editPostController", editPostController);
 
-    function editPostController($routeParams, postService, $location) {
+    function editPostController(currentUser, $routeParams, postService, $location) {
         var model = this;
-        model.userId = $routeParams["uid"];
         model.postId = $routeParams['poid'];
 
         model.updatePost = updatePost;
@@ -13,7 +12,7 @@
 
         function init() {
             postService
-                .findAllPostsforUser(model.userId)
+                .findAllPostsforUser(currentUser._id)
                 .then(function (posts) {
                     model.posts = posts;
                 });
@@ -21,7 +20,6 @@
                 .findPostById(model.postId)
                 .then(function (post) {
                     model.post = post;
-                    console.log(model.post);
                 })
         }
 
@@ -41,7 +39,7 @@
             postService
                 .updatePost(post._id, post)
                 .then(function () {
-                    $location.url('/user/' + model.userId);
+                    $location.url('/profile');
                 })
         }
 
@@ -49,7 +47,7 @@
             postService
                 .deletePost(post._id)
                 .then(function () {
-                    $location.url('/user/' + model.userId);
+                    $location.url('/profile');
 
                 })
         }

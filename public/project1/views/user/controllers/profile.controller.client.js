@@ -3,30 +3,27 @@
         .module('WAM')
         .controller('profileController', profileController);
 
-    function profileController($location, userService, $routeParams, postService, $sce) {
+    function profileController(currentUser, $location, userService, $routeParams, postService, $sce) {
 
         var model = this;
-        model.userId = $routeParams['uid'];
         model.postId = $routeParams['poid'];
         model.updateUser = updateUser;
-        model.deleteUser = deleteUser;
         model.logout = logout;
         model.createPost = createPost;
         model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
         model.getPostUrlForType = getPostUrlForType;
+        model.unregister = unregister;
 
         function init() {
+            renderUser(currentUser);
             postService
-                .findAllPostsforUser(model.userId)
+                .findAllPostsforUser(currentUser._id)
                 .then(function(posts) {
                     model.posts = posts;
                 })
         }
         init();
 
-        userService
-            .findUserById(model.userId)
-            .then(renderUser);
 
         function renderUser (user) {
             model.user = user;
@@ -40,11 +37,11 @@
                 })
         }
 
-        function deleteUser(user) {
+        function unregister() {
             userService
-                .deleteUser(user._id)
+                .unregister()
                 .then(function () {
-                    $location.url('/');
+                    $location.url('/login');
                 })
         }
 
@@ -52,7 +49,7 @@
             userService
                 .logout()
                 .then(
-                    function (response) {
+                    function () {
                         $location.url('/');
                     })
         }
@@ -72,22 +69,22 @@
         function createPost(postType) {
             switch (postType) {
                 case "HEADING":
-                    post =  {'_id' : model.postId, 'name': '', 'type': postType, '_user': model.userId, 'size': '', 'text': '', 'order': 1000};
+                    post =  {'_id' : model.postId, 'name': '', 'type': postType, '_user': currentUser._id, 'size': '', 'text': '', 'order': 1000};
                     break;
                 case "IMAGE":
-                    post =  {'_id' : model.postId, 'name': '', 'type': postType, '_user': model.userId, 'width': '', 'url': '', 'text': '', 'order': 1000};
+                    post =  {'_id' : model.postId, 'name': '', 'type': postType, '_user': currentUser._id, 'width': '', 'url': '', 'text': '', 'order': 1000};
                     break;
                 case "YOUTUBE":
-                    post =  {'_id' : model.postId, 'name': '', 'type': postType, '_user': model.userId, 'width': '', 'url': '', 'text': '', 'order': 1000};
+                    post =  {'_id' : model.postId, 'name': '', 'type': postType, '_user': currentUser._id, 'width': '', 'url': '', 'text': '', 'order': 1000};
                     break;
                 default:
                     break;
             }
 
             postService
-                .createPost(model.userId, post)
+                .createPost(currentUser._id, post)
                 .then(function(post) {
-                    $location.url('/user/' + model.userId + "/post/" + post._id);
+                    $location.url('/profile/post/' + post._id);
                 });
         }
     }

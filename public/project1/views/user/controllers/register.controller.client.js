@@ -52,7 +52,7 @@
                         .register(newUser)
                         .then(function (user) {
                             $rootScope.currentUser = user;
-                            $location.url("/user/" + user._id);
+                            $location.url("/profile");
                         });
                 }
             }

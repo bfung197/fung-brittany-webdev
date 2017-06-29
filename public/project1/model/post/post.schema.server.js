@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var postSchema = mongoose.Schema({
     _user: {type: mongoose.Schema.ObjectId, ref: "UserModel"},
     type: {type: String, enum :["YOUTUBE", "IMAGE", "HEADING"]},
+    likes: [{type: mongoose.Schema.ObjectId, ref: "UserModel"}],
     name: {type: String, default: 'Text'},
     text: String,
     placeholder: String,

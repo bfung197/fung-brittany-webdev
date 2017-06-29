@@ -1,95 +1,62 @@
 var app = require('../../../express');
 var exerciseModel = require('../model/exercise/exercise.model.server');
 
-app.post('/api/user/:userId/exercise', addExercise);
-app.get('/api/exercises', findAllExercises);
+app.post('/api/user/exercise', createExercise);
+app.get('/api/:userId/exercises', findAllExercisesForUser);
 app.get('/api/exercise/:exerciseId', findExerciseById);
-app.post('/api/user/:userId/exercise/create', createExercise);
-app.get('/api/exercise', findExerciseByName);
+app.put('/api/exercise/:exerciseId', updateExercise);
+app.delete('/api/exercise/:exerciseId', deleteExercise);
 
-
-function findExerciseByName(req, res) {
-    var name = req.body;
-    exerciseModel
-        .findExerciseByName(name)
-        .then(function(exercise) {
-            res.json(exercise);
-        })
-}
-
-function addExercise(req, res) {
-    var exercise = req.body;
-    var userId = req.params.userId;
-    exerciseModel
-        .addExercise(userId, exercise)
-        .then(function(exercise) {
-            res.json(exercise);
-        });
-}
 
 function createExercise(req, res) {
     var exercise = req.body;
-    var userId = req.params.userId;
+    var userId = req.user._id;
+    exercise._user = userId;
     exerciseModel
-        .addExercise(userId, exercise)
+        .createExerciseForUser(userId, exercise)
         .then(function(exercise) {
+            console.log(exercise);
             res.json(exercise);
         });
 }
 
-function findAllExercises(req, res) {
+function findAllExercisesForUser(req, res) {
+    var userId = req.params['userId'];
     exerciseModel
-        .findAllExercises()
-        .then(function(exercises) {
+        .findAllExercisesForUser(userId)
+        .then(function (exercises) {
             res.json(exercises);
-        })
+        });
 }
 
 function findExerciseById(req, res) {
-    var exerciseId = req.param['exerciseId'];
+    var exerciseId = req.params.exerciseId;
+
     exerciseModel
         .findExerciseById(exerciseId)
-        .then(function(response) {
-            res.json(response);
-        })
+        .then(function (exercise) {
+            res.json(exercise);
+        });
 }
 
-//
-// function findAllPagesForWebsite(req, res) {
-//     pageModel
-//         .findAllPagesForWebsite(req.params.websiteId)
-//         .then(function (pages) {
-//             res.json(pages);
-//         });
-// }
-//
-// function findPageById(req, res) {
-//     var pageId = req.params.pageId;
-//
-//     pageModel
-//         .findPageById(pageId)
-//         .then(function (page) {
-//             res.json(page);
-//         });
-// }
-//
-// function updatePage(req, res) {
-//     var page = req.body;
-//     var pageId = req.params.pageId;
-//
-//     pageModel
-//         .updatePage(pageId, page)
-//         .then(function (status) {
-//             res.sendStatus(200);
-//         });
-// }
-//
-// function deletePage(req, res) {
-//     var pageId = req.params.pageId;
-//     var websiteId = req.params.websiteId;
-//     pageModel
-//         .deletePage(websiteId, pageId)
-//         .then(function (status) {
-//             res.json(status);
-//         });
-// }
+function updateExercise(req, res) {
+    var exercise = req.body;
+    var exerciseId = req.params.exerciseId;
+
+    exerciseModel
+        .updateExercise(exerciseId, exercise)
+        .then(function (status) {
+            res.sendStatus(200);
+        });
+}
+
+
+function deleteExercise(req, res) {
+    var exerciseId = req.params.exerciseId;
+    var userId = req.user._id;
+    exerciseModel
+        .deleteExercise(userId, exerciseId)
+        .then(function (status) {
+            res.json(status);
+        });
+}

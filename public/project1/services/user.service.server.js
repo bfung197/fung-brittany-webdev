@@ -14,18 +14,25 @@ app.post('/api/project/user', createUser);
 app.get('/api/project/user', findUserByCredentials);
 app.get('/api/project/user/:uid', findUserById);
 app.put('/api/project/user/:uid', updateUser);
-app.delete('/api/project/user/:uid', deleteUser);
+app.delete('/api/project/user/:uid', isAdmin, deleteUser);
+app.delete('/api/project/unregister', unregister);
+app.post('/api/project/registerUser', registerUser);
 app.get('/api/project/username', findUserByUsername);
+app.post('api/project/follow/:uid', follow);
+
 app.post('/api/project/login', passport.authenticate('local'), login);
 app.post('/api/project/logout', logout);
 app.post('/api/project/register', register);
 app.get('/api/project/checkLoggedIn', loggedIn);
+app.get('/api/project/checkAdmin', checkAdmin);
+
 app.get('/auth/project/google', passport.authenticate('google', {scope: ['profile', 'email']}));
 app.get('/auth/google/callback',
     passport.authenticate('google', {
         successRedirect: '#!/profile',
         failureRedirect: '#!/login'
     }));
+
 app.get('/auth/project/facebook', passport.authenticate('facebook', {scope: 'email'}));
 app.get('/auth/facebook/callback', passport.authenticate('facebook', {
     successRedirect: 'http://localhost:3000/project1/index.html#!/profile',
@@ -67,7 +74,7 @@ function googleStrategy(token, refreshToken, profile, done) {
         .findUserByGoogleId(profile.id)
         .then(
             function (user) {
-                if (user) {
+                if (user !== null) {
                     userModel
                         .updateGoogleToken(token, profile.id, user._id)
                         .then(function () {
@@ -86,33 +93,20 @@ function googleStrategy(token, refreshToken, profile, done) {
                             token: token
                         }
                     };
-                    return userModel.createUser(newGoogleUser);
+                    return userModel
+                        .createUser(newGoogleUser)
+                        .then(function(user) {
+                            return done(null, user);
+                        })
                 }
-            },
-            function (err) {
-                if (err) {
-                    return done(err);
-                }
-            }
-        )
-        .then(
-            function (user) {
-                return done(null, user);
-            },
-            function (err) {
-                if (err) {
-                    return done(err);
-                }
-            }
-        );
+            });
 }
 
 function facebookStrategy(token, refreshToken, profile, done) {
     userModel
         .findUserByFacebookId(profile.id)
-        .then(
-            function (user) {
-                if (user) {
+        .then(function (user) {
+                if (user !== null) {
                     userModel
                         .updateFacebookToken(token, profile.id, user._id)
                         .then(function () {
@@ -139,8 +133,7 @@ function facebookStrategy(token, refreshToken, profile, done) {
                 }
             }
         )
-        .then(
-            function (user) {
+        .then(function (user) {
                 return done(null, user);
             },
             function (err) {
@@ -157,7 +150,18 @@ function authorized(req, res, next) {
     } else {
         next();
     }
-};
+}
+
+function follow(req, res) {
+    var userId = req.params['uid'];
+    var currentUser = req.user;
+    console.log(currentUser);
+    userModel
+        .follow(userId, currentUser._id)
+        .then(function(status){
+            res.send(status);
+        })
+}
 
 function findAllUsers(req, res) {
     var username = req.query['username'];
@@ -251,6 +255,33 @@ function findUserById(req, res) {
         });
 }
 
+function checkAdmin(req, res) {
+    if (req.isAuthenticated() &&
+        req.user.roles.indexOf('ADMIN') > -1) {
+        res.json(req.user);
+    } else {
+        res.send('0');
+    }
+}
+
+function isAdmin(req, res, next) {
+    if (req.isAuthenticated() && req.user.roles.indexOf('ADMIN') > -1) {
+        next();
+    }
+    else {
+        res.sendStatus(401);
+    }
+}
+
+function unregister(req, res) {
+    userModel
+        .deleteUser(req.user._id)
+        .then(function() {
+            req.user.logout();
+            res.sendStatus(200);
+        })
+}
+
 <!-- local -->
 function serializeUser(user, done) {
     done(null, user);
@@ -307,8 +338,17 @@ function register(req, res) {
         });
 }
 
+function registerUser(req, res) {
+    var user = req.body;
+    user.password = bcrypt.hashSync(user.password);
+    userModel
+        .createUser(user)
+        .then(function(user) {
+            res.json(user);
+        })
+}
+
 function loggedIn(req, res) {
-    console.log(req);
     if (req.isAuthenticated()) {
         res.json(req.user);
     } else {

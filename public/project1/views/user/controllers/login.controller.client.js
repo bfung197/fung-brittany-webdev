@@ -24,7 +24,7 @@
 
             function login(user) {
                 if(user) {
-                    $location.url("/user/" + user._id);
+                    $location.url("/profile");
                 }
             }
 

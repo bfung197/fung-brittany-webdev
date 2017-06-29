@@ -1,10 +1,111 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div class="container-fluid">
 
-</body>
-</html>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#page-list">
+                    <span class="icon-bar white"></span>
+                    <span class="icon-bar white"></span>
+                    <span class="icon-bar white"></span>
+                </button>
+                <a class="navbar-brand" href="#">Home Page</a>
+            </div>
+            <div class="collapse navbar-collapse" id="page-list">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#!/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                    <li><a href="#!/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                    <li><a ng-click="model.logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                </ul>
+                <ul class="navbar navbar-nav">
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <h2>Admin Page</h2>
+    <ul class="list-group">
+        <li class="list-group-item active">
+            <div class="row">
+                <div class="col-xs-4 col-sm-2 col-md-2">
+                    Username
+                </div>
+                <div class="col-xs-4 col-sm-2 col-md-2">
+                    Password
+                </div>
+                <div class="hidden-xs col-sm-2 col-md-2">
+                   First Name
+                </div>
+                <div class="hidden-xs col-sm-2 col-md-2">
+                    Last Name
+                </div>
+                <div class="hidden-xs col-sm-2 col-md-2">
+                    Roles
+                </div>
+                <div class="col-xs-4 col-sm-2">
+                    Update
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-4 col-sm-2 col-md-2">
+                    <input ng-model="model.user.username"
+                           class="form-control"/>
+                </div>
+                <div class="col-xs-4 col-sm-2 col-md-2">
+                    <input ng-model="model.user.password"
+                           class="form-control"/>
+                </div>
+                <div class="hidden-xs col-sm-2 col-md-2">
+                    <input ng-model="model.user.firstName"
+                           class="form-control"/>
+                </div>
+                <div class="hidden-xs col-sm-2 col-md-2">
+                    <input ng-model="model.user.lastName"
+                           class="form-control"/>
+                </div>
+                <div class="hidden-xs col-sm-2 col-md-2">
+                    <input ng-model="model.user.roles"
+                           class="form-control"/>
+                </div>
+                <div class="col-xs-2 col-sm-1">
+                    <span ng-click="model.updateUser(model.user); model.user={}"
+                          class="glyphicon glyphicon-ok"></span>
+                </div>
+                <div class="col-xs-2 col-sm-1">
+                    <span ng-click="model.createUser(model.user); model.user={}"
+                          class="glyphicon glyphicon-plus"></span>
+                </div>
+            </div>
+        </li>
+        <li ng-repeat="user in model.users"
+            class="list-group-item">
+            <div class="row">
+                <div class="col-xs-4 col-sm-2 col-md-2">
+                   {{user.username}}
+                </div>
+                <div class="col-xs-4 col-sm-2 col-md-2">
+                    password
+                </div>
+                <div class="hidden-xs col-sm-2 col-md-2">
+                    {{user.firstName}}
+                </div>
+                <div class="hidden-xs col-sm-2 col-md-2">
+                    {{user.lastName}}
+                </div>
+                <div class="hidden-xs col-sm-2 col-md-2">
+                    {{user.roles}}
+                </div>
+                <div class="col-xs-2 col-sm-1">
+                    <span ng-click="model.selectUser(user)"
+                          class="glyphicon glyphicon-pencil"></span>
+                </div>
+                <div class="col-xs-2 col-sm-1">
+                    <span ng-click="model.deleteUser(user)"
+                          class="glyphicon glyphicon-remove"></span>
+                </div>
+
+            </div>
+        </li>
+    </ul>
+</div>

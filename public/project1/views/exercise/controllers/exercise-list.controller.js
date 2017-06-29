@@ -3,12 +3,14 @@
         .module("WAM")
         .controller("exerciseListController", exerciseListController);
 
-    function exerciseListController($routeParams, userService, exerciseService) {
+    function exerciseListController(exerciseService, currentUser) {
         var model = this;
-        model.userId = $routeParams['uid'];
+        model.userId = currentUser._id;
+
 
         function init() {
-            userService
+
+            exerciseService
                 .findAllExercisesForUser(model.userId)
                 .then(renderExercises)
         }

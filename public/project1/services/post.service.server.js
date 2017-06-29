@@ -9,6 +9,17 @@ app.get('/api/post/:postId', findPostById);
 app.put('/api/post/:postId', updatePost);
 app.delete('/api/post/:postId', deletePost);
 app.post ("/api/post/upload", upload.single('myFile'), uploadImage);
+app.get("/api/post/:postId/likes", findAllLikesForPost);
+
+
+function findAllLikesForPost(req, res) {
+    var postId = req.params['postId'];
+    postModel
+        .findPostById(postId)
+        .then(function(response) {
+            res.json(response);
+        })
+}
 
 function uploadImage(req, res) {
 
@@ -30,7 +41,7 @@ function uploadImage(req, res) {
             postModel
                 .updatePost(postId, post)
                 .then(function () {
-                    res.redirect("/project/exercise-search.view.client.html#!/user/" + userId + "/post/" + postId);
+                    res.redirect("/project1/index.html#!/profile/post/" + postId);
                 }, function (err) {
                     res.send(err);
                 });
@@ -61,7 +72,7 @@ function findAllPostsforUser(req, res) {
 
 function findPostById(req, res) {
     postModel
-        .findPostById(req.params.postId)
+        .findById(req.params.postId)
         .then(function (post) {
             res.send(post);
         }, function (err) {

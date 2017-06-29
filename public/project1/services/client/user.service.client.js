@@ -16,16 +16,51 @@
             logout: logout,
             register: register,
             findAllUsers : findAllUsers,
-            checkLoggedIn: checkLoggedIn
+            checkLoggedIn: checkLoggedIn,
+            checkAdmin: checkAdmin,
+            unregister: unregister,
+            registerUser: registerUser,
+            follow: follow
         };
 
         return api;
 
+        function follow(userId) {
+            return $http.post("/api/project/follow/" + userId)
+                .then(function(response) {
+                    console.log(response);
+                    return response.data;
+                })
+        }
+
+        function registerUser(user) {
+            return $http.post("/api/project/registerUser", user)
+                .then(function(response) {
+                    return response.data;
+                })
+        }
+
+        function unregister() {
+            var url = "/api/project/unregister";
+            return $http.delete(url)
+                .then(function(response) {
+                    console.log(response);
+                    return response;
+                })
+        }
+
+        function checkAdmin() {
+            var url = "/api/project/checkAdmin";
+            return $http.get(url)
+                .then(function(response) {
+                    return response.data;
+                })
+        }
+
         function checkLoggedIn() {
             var url = "/api/project/checkLoggedIn";
-            $http.get(url)
+            return $http.get(url)
                 .then(function(response) {
-                    console.log(response.data);
                     return response.data;
                 })
         }
@@ -48,7 +83,11 @@
         }
 
         function logout() {
-            return $http.post("/api/project/logout");
+            return $http
+                .post("/api/project/logout")
+                .then(function(response) {
+                    return response.data;
+                })
         }
 
         function login(username, password) {
@@ -80,7 +119,7 @@
         }
 
         function deleteUser(userId) {
-            var url ="/api/project/user/" + userId;
+            var url = "/api/project/user/" + userId;
             return $http.delete(url)
                 .then(function (response) {
                     return response.data;

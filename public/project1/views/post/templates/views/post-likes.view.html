@@ -1,0 +1,14 @@
+<div class="container-fluid">
+
+    <div ng-show="model.message" class="alert alert-info">
+        {{model.message}}
+    </div>
+
+    <ul class="list-group">
+        <li ng-repeat="like in model.likes" class="list-group-item">
+            {{like}}
+        </li>
+    </ul>
+
+    <a class="btn btn-block btn-success" ng-click="model.likePost(post)">Like this Post</a>
+</div>

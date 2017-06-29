@@ -9,13 +9,14 @@ userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
-userModel.addWebsite = addWebsite;
-userModel.removeWebsite = removeWebsite;
+userModel.addExercise = addExercise;
+userModel.removeExercise = removeExercise;
 userModel.findUserByFacebookId = findUserByFacebookId;
 userModel.findAllUsers = findAllUsers;
 userModel.findUserByGoogleId = findUserByGoogleId;
 userModel.updateFacebookToken = updateFacebookToken;
 userModel.updateGoogleToken = updateGoogleToken;
+userModel.follow = follow;
 
 module.exports = userModel;
 
@@ -47,12 +48,32 @@ function updateFacebookToken(token, profileId, userId) {
         });
 }
 
+function follow(userId, currentUserId) {
+    userModel
+        .findById(currentUserId)
+        .then(function(currentUser) {
+            userModel
+                .findById(userId)
+                .then(function(user) {
+                    user.following.push(currentUserId);
+                    return user.save();
+                });
+            currentUser.follows.push(userId);
+            return currentUser.save();
+        })
+}
+
 function findAllUsers() {
     return userModel
         .find();
 }
 
 function createUser(user) {
+    if (user.roles) {
+        user.roles = user.roles.split(',');
+    } else {
+        user.roles = ['USER'];
+    }
     return userModel
         .create(user);
 }
@@ -74,13 +95,19 @@ function findUserByCredentials(username, password) {
 
 function updateUser(userId, user) {
     delete user.username;
+    delete user.password;
+    if(typeof user.roles === 'string') {
+        user.roles = user.roles.split(',');
+        console.log(user.roles);
+    }
     return userModel
         .update({_id: userId}, {
             $set: {
                 firstName: user.firstName,
                 lastName: user.lastName,
                 email: user.email,
-                phone: user.phone
+                phone: user.phone,
+                roles: user.roles
             }
         });
 }
@@ -91,21 +118,21 @@ function deleteUser(userId) {
 }
 
 
-function addWebsite(userId, websiteId) {
+function addExercise(userId, exerciseId) {
     return userModel
         .findById(userId)
         .then(function (user) {
-            user.websites.push(websiteId);
+            user.exercises.push(exerciseId);
             return user.save();
         })
 }
 
-function removeWebsite(userId, websiteId) {
+function removeExercise(userId, exerciseId) {
     return userModel
         .findUserById(userId)
         .then(function (user) {
-            var index = user.websites.indexOf(websiteId);
-            user.websites.splice(index, 1);
+            var index = user.exercises.indexOf(exerciseId);
+            user.exercises.splice(index, 1);
             return user.save();
         });
 }

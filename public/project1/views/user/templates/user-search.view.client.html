@@ -1,10 +1,14 @@
 <div class="container-fluid">
     <h2>Users</h2>
+
+    <div ng-show="model.message" class="alert alert-success">
+        {{model.message}}
+    </div>
     <ul class="list-group">
-        <a ng-repeat="user in model.users"
-            href="#!/user/{{user._id}}"
+        <li ng-repeat="user in model.users"
             class="list-group-item">
             {{user.username}}
-        </a>
+            <span ng-click="model.follow(user)" class="glyphicon glyphicon-hand-right pull-right"></span>
+        </li>
     </ul>
 </div>

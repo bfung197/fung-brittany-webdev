@@ -6,6 +6,7 @@
     function userSearchController(userService) {
 
         var model = this;
+        model.follow = follow;
 
         function init() {
             userService
@@ -15,5 +16,14 @@
                 })
         }
         init();
+
+        function follow(user) {
+            console.log(user);
+            userService
+                .follow(user._id)
+                .then(function() {
+                    model.message = "User followed!";
+                })
+        }
     }
 })();

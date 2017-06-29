@@ -11,8 +11,17 @@
             findPostById : findPostById,
             updatePost: updatePost,
             deletePost: deletePost,
-            uploadImage: uploadImage
+            uploadImage: uploadImage,
+            findAllLikesForPost: findAllLikesForPost
         };
+
+        function findAllLikesForPost(postId) {
+            var url = "/api/post" + postId + "/likes";
+            return $http.get(url)
+                .then(function(response) {
+                    return response.data;
+                })
+        }
 
         function createPost(userId, post) {
             var url = "/api/user/" + userId + "/post";

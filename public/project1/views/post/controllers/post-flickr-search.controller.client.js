@@ -43,7 +43,7 @@
 
         function goToPosts() {
             $location
-                .url('/user/' + model.userId);
+                .url('/profile');
         }
 
     }

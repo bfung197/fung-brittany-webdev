@@ -10,9 +10,20 @@ postModel.findAllPostsForUser = findAllPostsForUser;
 postModel.findPostById = findPostById;
 postModel.updatePost = updatePost;
 postModel.deletePost = deletePost;
+postModel.findAllLikesForPost = findAllLikesForPost;
 
 module.exports = postModel;
 
+
+function findAllLikesForPost(postId) {
+    postModel
+        .findById(postId)
+        .populate('likes', 'username')
+        .exec()
+        .then(function(post) {
+            return post.likes();
+        })
+}
 
 function createPostForUser(userId, post) {
     post._user = userId;

@@ -1,5 +1,4 @@
-<div class="container-fluid"
-     ng-controller="exerciseController as model">
+<div class="container-fluid">
 
     <h1>Exercise Search</h1>
     <div class="row">
@@ -59,16 +58,6 @@
             <h4>{{model.exercise.name}}</h4>
             <div id="description"></div>
 
-            <a ng-show="model.exercise" ng-click="model.addExercise(model.exercise)"
-               class="btn btn-success btn-block">
-                Add Exercise to Program
-            </a>
-
-            <li ng-repeat="user in model.users" class="list-group-item">
-                <a href="#!/user/{{model.userId}}">
-                    {{user.name}}
-                </a>
-            </li>
         </div>
     </div>
 </div>

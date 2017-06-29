@@ -1,14 +1,14 @@
 (function () {
     angular
         .module("WAM")
-        .controller("exerciseController", exerciseController);
+        .controller("exerciseSearchController", exerciseSearchController);
 
-    function exerciseController($routeParams, $http, exerciseService, userService) {
+    function exerciseSearchController(currentUser, $http, exerciseService) {
         var model = this;
-        model.userId = $routeParams['uid'];
         model.searchExercise = searchExercise;
         model.searchDetails = searchDetails;
         model.addExercise = addExercise;
+        model.user = currentUser;
 
         function searchExercise(muscle) {
             var url = "https://wger.de/api/v2/exercise/?muscles=" + muscle + "&language=2";
@@ -23,13 +23,13 @@
             $http.get(url)
                 .then(function (response) {
                     model.exercise = response.data;
-                    model.description = response.data.description;
-                    document.getElementById('description').innerHTML = model.description;
+                    model.exercise.description = response.data.description;
+                    document.getElementById('description').innerHTML = model.exercise.description;
                 })
         }
 
         function addExercise(exercise) {
-            if (model.userId === undefined) {
+            if (currentUser === undefined || currentUser === null || !currentUser) {
                 model.error = "Please log in to add exercise to program."
             }
             else {
@@ -38,13 +38,13 @@
                     .then(function(response) {
                         if(response !== null) {
                             exerciseService
-                                .addExercise(response, model.userId)
+                                .addExercise(response, currentUser._id)
                                 .then(function() {
                                     model.message = "Exercise added."
                                 })
                         } else {
                             exerciseService
-                                .createExercise(exercise, model.userId)
+                                .createExercise(exercise, currentUser._id)
                                 .then(function() {
                                     model.message = "Exercise created and added."
                                 })

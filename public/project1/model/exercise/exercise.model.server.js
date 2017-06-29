@@ -4,90 +4,49 @@ var exerciseSchema = require('./exercise.schema.server');
 
 var exerciseModel = mongoose.model('ExerciseModel', exerciseSchema);
 
-exerciseModel.addExercise = addExercise;
-exerciseModel.findAllExercises = findAllExercises;
+exerciseModel.createExerciseForUser = createExerciseForUser;
+exerciseModel.findAllExercisesForUser = findAllExercisesForUser;
 exerciseModel.findExerciseById = findExerciseById;
-exerciseModel.addUser = addUser;
-exerciseModel.createExercise = createExercise;
-exerciseModel.findExerciseByName = findExerciseByName;
-// exerciseModel.findAllExercisesForUser = findAllPagesForWebsite;
-// exerciseModel.findPageById = findPageById;
-// exerciseModel.updatePage = updatePage;
-// exerciseModel.deletePage = deletePage;
+exerciseModel.updateExercise = updateExercise;
+exerciseModel.deleteExercise = deleteExercise;
 
 module.exports = exerciseModel;
 
-function findExerciseByName(name) {
-    exerciseModel
-        .findOne({name: name});
-}
-
-function addExercise(userId, exercise) {
-    return userModel
-        .addExercise(userId, exercise)
-
-}
-
-function createExercise(exercise, userId) {
-    exercise.users = [];
-    exercise.users.push(userId);
+function createExerciseForUser(userId, exercise) {
+    exercise._user = userId;
     return exerciseModel
         .create(exercise)
-        .then(function (exercise) {
+        .then(function(exercise) {
             return userModel
-                .addExercise(userId, exercise)
-        });
-}
-
-function addUser(exerciseId, userId) {
-    return exerciseModel
-        .findExerciseById(exerciseId)
-        .then(function (exercise) {
-            exercise.users.push(userId);
-            return exercise.save();
+                .addExercise(userId, exercise._id)
         })
 }
 
-function findAllExercises() {
-    exerciseModel
-        .find();
+function findAllExercisesForUser(userId) {
+    return exerciseModel
+        .find({_user: userId})
+        .populate("name" && "_user", "username")
+        .exec();
 }
 
 function findExerciseById(exerciseId) {
-    exerciseModel
+    return exerciseModel
         .findById(exerciseId);
 }
 
-// function findAllPagesForWebsite(websiteId) {
-//     return pageModel
-//         .find({_website: websiteId})
-//         .populate('_website', 'name')
-//         .exec();
-// }
-//
-// function findPageById(pageId) {
-//     return pageModel
-//         .findById(pageId);
-// }
-//
-// function updatePage(pageId, page) {
-//     return pageModel
-//         .update({_id: pageId}, {
-//             $set : {
-//                 _website: page._website,
-//                 name: page.name,
-//                 title: page.title,
-//                 description: page.description,
-//             }
-//         });
-//
-// }
-//
-// function deletePage(websiteId, pageId) {
-//     return pageModel
-//         .remove({_id: pageId})
-//         .then(function (status) {
-//             return websiteModel
-//                 .removePage(websiteId, pageId);
-//         });
-// }
+function updateExercise(exerciseId, exercise) {
+    return exerciseModel
+        .update({_id: exerciseId}, {
+            $set: {
+                _user: exercise._user,
+                name: exercise.name,
+                description: exercise.description,
+            }
+        });
+
+}
+
+function deleteExercise(exerciseId) {
+    return exerciseModel
+        .remove({_id: exerciseId});
+}

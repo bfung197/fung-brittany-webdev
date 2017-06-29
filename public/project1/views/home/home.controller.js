@@ -3,7 +3,7 @@
         .module('WAM')
         .controller('homeController', homeController);
 
-    function homeController($location, userService, $rootScope) {
+    function homeController(currentUser, userService, $location) {
 
         var model = this;
         model.currentUser = currentUser;

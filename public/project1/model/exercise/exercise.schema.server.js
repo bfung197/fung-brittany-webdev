@@ -1,10 +1,10 @@
 var mongoose = require('mongoose');
 
 var exerciseSchema = mongoose.Schema({
+    _user: {type: mongoose.Schema.ObjectId, ref: "UserModel"},
     name: String,
     description: String,
-    users: [{type: mongoose.Schema.ObjectId, ref: "UserModel"}],
-    dateCompleted: {type: Date, default: Date.now},
+    dateCreated: {type: Date, default: Date.now},
 
 }, {collection:'exercise'});
 
