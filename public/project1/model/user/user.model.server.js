@@ -14,9 +14,38 @@ userModel.removeWebsite = removeWebsite;
 userModel.findUserByFacebookId = findUserByFacebookId;
 userModel.findAllUsers = findAllUsers;
 userModel.findUserByGoogleId = findUserByGoogleId;
+userModel.updateFacebookToken = updateFacebookToken;
+userModel.updateGoogleToken = updateGoogleToken;
 
 module.exports = userModel;
 
+function updateGoogleToken(token, profileId, userId) {
+    var google = {
+        id: profileId,
+        token: token
+    };
+
+    return userModel
+        .update({_id: userId}, {
+            $set: {
+                google: google
+            }
+        });
+}
+
+function updateFacebookToken(token, profileId, userId) {
+    var facebook = {
+        id: profileId,
+        token: token
+    };
+
+    return userModel
+        .update({_id: userId}, {
+            $set: {
+                facebook: facebook
+            }
+        });
+}
 
 function findAllUsers() {
     return userModel
@@ -47,13 +76,13 @@ function updateUser(userId, user) {
     delete user.username;
     return userModel
         .update({_id: userId}, {
-        $set : {
-            firstName: user.firstName,
-            lastName: user.lastName,
-            email: user.email,
-            phone: user.phone
-        }
-    });
+            $set: {
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                phone: user.phone
+            }
+        });
 }
 
 function deleteUser(userId) {

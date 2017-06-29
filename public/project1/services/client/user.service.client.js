@@ -15,14 +15,24 @@
             login: login,
             logout: logout,
             register: register,
-            findAllUsers : findAllUsers
+            findAllUsers : findAllUsers,
+            checkLoggedIn: checkLoggedIn
         };
 
         return api;
 
+        function checkLoggedIn() {
+            var url = "/api/project/checkLoggedIn";
+            $http.get(url)
+                .then(function(response) {
+                    console.log(response.data);
+                    return response.data;
+                })
+        }
+
 
         function findAllUsers() {
-            var url = "/api/users";
+            var url = "/api/project/users";
             return $http.get(url)
                 .then(function(response) {
                     return response.data;
@@ -31,18 +41,18 @@
         }
 
         function register(user) {
-            return $http.post("/api/register", user)
+            return $http.post("/api/project/register", user)
                 .then(function(response) {
                     return response.data;
                 })
         }
 
         function logout() {
-            return $http.post("/api/logout");
+            return $http.post("/api/project/logout");
         }
 
         function login(username, password) {
-            var url = "/api/login";
+            var url = "/api/project/login";
             var credentials = {
                 username: username,
                 password: password
@@ -54,7 +64,7 @@
         }
 
         function createUser(user) {
-            var url = "/api/user";
+            var url = "/api/project/user";
             return $http.post(url, user)
                 .then(function (response) {
                     return response.data;
@@ -62,7 +72,7 @@
         }
 
         function updateUser(userId, user) {
-            var url ="/api/user/" + userId;
+            var url ="/api/project/user/" + userId;
             return $http.put(url, user)
                 .then(function (response) {
                     return response.data;
@@ -70,7 +80,7 @@
         }
 
         function deleteUser(userId) {
-            var url ="/api/user/" + userId;
+            var url ="/api/project/user/" + userId;
             return $http.delete(url)
                 .then(function (response) {
                     return response.data;
@@ -78,7 +88,7 @@
         }
 
         function findUserByCredentials(username, password) {
-            var url = "/api/user?username=" + username + "&password=" + password;
+            var url = "/api/project/user?username=" + username + "&password=" + password;
             return $http.get(url, username, password)
                 .then(function(response) {
                     return response.data;
@@ -86,8 +96,7 @@
         }
 
         function findUserByUsername(username) {
-            console.log(username);
-            var url = "/api/assignment/user?username=" + username;
+            var url = "/api/project/username?username=" + username;
             return $http.get(url, username)
                 .then(function(response) {
                     return response.data;
@@ -95,7 +104,7 @@
         }
 
         function findUserById(userId) {
-            var url = "/api/user/" + userId;
+            var url = "/api/project/user/" + userId;
             return $http.get(url)
                 .then(function(response) {
                     return response.data;

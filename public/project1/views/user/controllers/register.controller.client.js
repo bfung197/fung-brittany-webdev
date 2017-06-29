@@ -29,7 +29,6 @@
                 model.message = "Passwords must match";
                 return;
             }
-            console.log(username);
 
             userService
                 .findUserByUsername(username)
@@ -40,7 +39,6 @@
             }
 
             function register(found) {
-                console.log(found);
                 if (found !== null) {
                     model.message = "Username not available."
                 }
@@ -49,8 +47,6 @@
                         username: username,
                         password: password
                     };
-
-                    console.log(newUser);
 
                     userService
                         .register(newUser)

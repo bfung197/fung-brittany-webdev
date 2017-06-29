@@ -32,7 +32,9 @@
                 controllerAs: 'model'
             })
             .when('/', {
-                templateUrl: 'home.html'
+                templateUrl: 'views/home/home.html',
+                controller: 'homeController',
+                controllerAs: 'model'
             })
             .when('/login', {
                 templateUrl: 'views/user/templates/login.view.client.html',
@@ -43,11 +45,6 @@
                 templateUrl: 'views/user/templates/register.view.client.html',
                 controller: 'registerController',
                 controllerAs: 'model'
-            })
-            .when('/user', {
-                templateUrl: 'views/user/templates/profile.view.client.html',
-                controller: 'profileController',
-                controllerAs: 'model',
             })
             .when('/user/:uid', {
                 templateUrl: 'views/user/templates/profile.view.client.html',
@@ -148,17 +145,21 @@
         return deferred.promise;
     }
 
-    var checkLoggedIn = function($q, $timeout, $http, $location, $rootScope) {
-        var deferred = $q.defer();
-        $http.get('/api/loggedIn').success(function(user) {
-            $rootScope.errorMessage = null;
-            if (user !== '0') {
-                deferred.resolve(user);
-            } else {
-                deferred.reject();
-                $location.url('/');
-            }
-        });
-        return deferred.promise;
-    };
+    function checkLoggedIn(userService) {
+        return userService.checkLoggedIn();
+    }
+
+    // var checkLoggedIn = function($q, $timeout, $http, $location, $rootScope) {
+    //     var deferred = $q.defer();
+    //     $http.get('/api/loggedIn').success(function(user) {
+    //         $rootScope.errorMessage = null;
+    //         if (user !== '0') {
+    //             deferred.resolve(user);
+    //         } else {
+    //             deferred.reject();
+    //             $location.url('/login');
+    //         }
+    //     });
+    //     return deferred.promise;
+    // };
 })();
